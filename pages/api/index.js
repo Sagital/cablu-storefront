@@ -1,7 +1,7 @@
 export default async function(req, res) {
   const result = {
     pageData: {
-      title: 'React Storefront',
+      title: 'Cablu IO',
       slots: {
         heading: 'Welcome to your new React Storefront app.',
         description:

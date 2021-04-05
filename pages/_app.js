@@ -8,10 +8,10 @@ import PWA from 'react-storefront/PWA'
 import NavBar from '../components/NavBar'
 import reportError from '../components/reportError'
 import useJssStyles from 'react-storefront/hooks/useJssStyles'
-import SessionProvider from 'react-storefront/session/SessionProvider'
 import useAppStore from 'react-storefront/hooks/useAppStore'
+import SessionProvider from '../context/SessionProvider'
 
-const styles = theme => ({
+const styles = () => ({
   main: {
     paddingTop: 3,
   },

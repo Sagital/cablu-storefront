@@ -812,18 +812,24 @@ export default async function plp(req, res) {
   x.pageData.name = category.name
   x.pageData.title = category.title
 
-  x.pageData.products = category.products.edges.map(edge => {
-    return convertProduct(edge.node)
-  })
+  x.pageData.products = category.products.edges
+    .map(edge => edge.node)
+    .filter(p => p.defaultVariant !== null)
+    .map(convertProduct)
 
   res.json(x)
 }
 
 const convertProduct = product => {
+  if (!product.defaultVariant) {
+    console.log('could not find default variant of product')
+    console.log(product)
+  }
+
   return {
-    id: product.id,
-    url: '/p/' + product.id,
-    name: product.name,
+    id: product.defaultVariant.id,
+    url: '/p/' + product.defaultVariant.id,
+    name: product.defaultVariant.name,
     price: 10.99, // the price as a number
     priceText: '$10.99', // the price as formatted text with currency
     description: 'product description', // the product description

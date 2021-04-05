@@ -16,3 +16,9 @@ You can get a better sense of the speed of React Storefront by running a product
 ```
 npm run build && npm run prod
 ```
+
+### 
+
+```
+{"RO": {"fmt": "%N%n%O%n%A%n%Z%D%S %C", "id": "data/RO", "key": "RO", "name": "ROMANIA", "posturl": "http://www.posta-romana.ro/zip_codes", "require": "ACZ", "upper": "", "zip": "\\d{6}", "zipex": "060274,061357,200716"}}
+```

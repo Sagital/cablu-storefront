@@ -4,7 +4,6 @@ require('dotenv').config()
 
 module.exports = withReactStorefront({
   target: 'serverless',
-  connector: 'react-storefront/mock-connector',
   webpack: config => {
     config.plugins.push(
       new webpack.optimize.LimitChunkCountPlugin({

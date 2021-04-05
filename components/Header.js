@@ -8,7 +8,7 @@ import { Container } from '@material-ui/core'
 import Menu from 'react-storefront/menu/Menu'
 import MenuButton from 'react-storefront/menu/MenuButton'
 import Link from 'react-storefront/link/Link'
-import SessionContext from 'react-storefront/session/SessionContext'
+import SessionContext from '../context/SessionContext'
 import get from 'lodash/get'
 
 const useStyles = makeStyles(theme => ({

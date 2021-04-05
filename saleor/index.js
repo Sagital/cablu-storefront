@@ -1,25 +1,8 @@
-import { getProductVariant } from '../../../saleor/api'
-
-export default async function pdp(req, res) {
-  const { productId } = req.query
-
-  const productVariant = await getProductVariant(productId)
-
-  const pageData = {
-    pageData: {
-      title: 'Page Title', // the document title
-      product: convertProduct(productVariant),
-    },
-  }
-
-  return res.json(pageData)
-}
-
-function convertProduct(variant) {
+export const convertProduct = product => {
   return {
-    id: variant.id,
-    url: '/p/' + variant.id,
-    name: variant.name,
+    id: product.id,
+    url: '/p/' + product.id,
+    name: product.name,
     price: 10.99, // the price as a number
     priceText: '$10.99', // the price as formatted text with currency
     description: 'product description', // the product description
@@ -29,8 +12,8 @@ function convertProduct(variant) {
       full: [
         {
           // an array of full size images
-          src: variant.product.media[0].url, // the URL of the full size image
-          alt: variant.product.media[0].url.alt, // alt text for the full size image
+          src: product.images[0].url, // the URL of the full size image
+          alt: product.images[0].url.alt, // alt text for the full size image
           type: 'image', // "image" or "video" - by default entries will be treated as images
           // magnify: {
           //   // optional - provides a high-res image for manigfication on hover in desktop browsers
@@ -43,8 +26,8 @@ function convertProduct(variant) {
       thumbnails: [
         {
           // an array of thumbnails to display below the main image carousel
-          src: variant.product.thumbnail.url, // the thumbnail URL
-          alt: variant.product.thumbnail.alt, // alt text for the thumbnail
+          src: product.thumbnail.url, // the thumbnail URL
+          alt: product.thumbnail.alt, // alt text for the thumbnail
         },
       ],
     },

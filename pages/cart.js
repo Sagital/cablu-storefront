@@ -10,7 +10,7 @@ import { price } from 'react-storefront/utils/format'
 import Spacer from 'react-storefront/Spacer'
 import Link from 'react-storefront/link/Link'
 import { Hbox } from 'react-storefront/Box'
-import SessionContext from 'react-storefront/session/SessionContext'
+import SessionContext from '../context/SessionContext'
 import get from 'lodash/get'
 
 const styles = theme => ({
@@ -45,13 +45,18 @@ const styles = theme => ({
 
 const useStyles = makeStyles(styles)
 
-export default function Cart(props) {
+export default function Cart() {
   const classes = useStyles()
   const { session, actions } = useContext(SessionContext)
   const items = get(session, 'cart.items')
 
+  console.log(items)
+
+  const checkoutId = get(session, 'cart.id')
+
   const handleUpdateQuantity = (product, quantity) => {
     actions.updateCart({
+      id: checkoutId,
       item: product,
       quantity,
     })
@@ -59,7 +64,8 @@ export default function Cart(props) {
 
   const handleRemove = product => {
     actions.removeCartItem({
-      item: product,
+      id: checkoutId,
+      lineId: product.lineId,
     })
   }
 
@@ -74,7 +80,7 @@ export default function Cart(props) {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={8}>
             {items.length ? (
-              items.map((product, i) => (
+              items.map(product => (
                 <CartItem
                   key={product.id}
                   updateQuantity={handleUpdateQuantity}

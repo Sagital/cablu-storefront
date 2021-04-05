@@ -16,7 +16,7 @@ import Rating from 'react-storefront/Rating'
 import get from 'lodash/get'
 import fetch from 'react-storefront/fetch'
 import { fetchLatest, StaleResponseError } from 'react-storefront/utils/fetchLatest'
-import SessionContext from 'react-storefront/session/SessionContext'
+import SessionContext from '../../context/SessionContext'
 import AddToCartConfirmation from '../../components/product/AddToCartConfirmation'
 import SuggestedProducts from '../../components/product/SuggestedProducts'
 import Lazy from 'react-storefront/Lazy'
@@ -95,7 +95,7 @@ const Product = React.memo(lazyProps => {
   const color = get(state, 'pageData.color') || {}
   const size = get(state, 'pageData.size') || {}
   const quantity = get(state, 'pageData.quantity')
-  const { actions } = useContext(SessionContext)
+  const { actions, session } = useContext(SessionContext)
   const { loading } = state
 
   // This is provided when <ForwardThumbnail> is wrapped around product links
@@ -109,6 +109,7 @@ const Product = React.memo(lazyProps => {
     try {
       // send the data to the server
       await actions.addToCart({
+        id: session.cart.id,
         product,
         quantity,
         color: color.id,

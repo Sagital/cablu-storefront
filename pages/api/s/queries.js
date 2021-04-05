@@ -5,7 +5,7 @@ export default gql`
     category(slug: $slug) {
       id
       name
-      products(first: 100) {
+      products(channel: "default-channel", first: 100) {
         edges {
           node {
             id

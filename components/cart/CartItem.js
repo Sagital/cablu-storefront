@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState } from 'react'
 import { Paper, IconButton, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Close as CloseIcon } from '@material-ui/icons'
@@ -7,7 +7,7 @@ import Link from 'react-storefront/link/Link'
 import QuantitySelector from 'react-storefront/QuantitySelector'
 import { Hbox } from 'react-storefront/Box'
 import Image from 'react-storefront/Image'
-import SessionContext from 'react-storefront/session/SessionContext'
+// import SessionContext from 'react-storefront/session/SessionContext'
 import RemoveDialog from './RemoveDialog'
 
 const styles = theme => ({
