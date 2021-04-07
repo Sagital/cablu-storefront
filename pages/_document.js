@@ -6,7 +6,7 @@ import theme from '../components/theme'
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" dir="ltr">
         <Head>
           <meta charSet="utf-8" />
           {/* PWA primary color */}

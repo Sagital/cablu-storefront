@@ -10,31 +10,6 @@ import Image from 'react-storefront/Image'
 // import SessionContext from 'react-storefront/session/SessionContext'
 import RemoveDialog from './RemoveDialog'
 
-const styles = theme => ({
-  root: {
-    flex: 1,
-    padding: theme.spacing(2, 5, 2, 2),
-    marginBottom: theme.spacing(2),
-    position: 'relative',
-  },
-  thumb: {
-    marginRight: theme.spacing(2),
-    width: 200,
-    [theme.breakpoints.down('xs')]: {
-      width: 100,
-    },
-  },
-  label: {
-    marginRight: theme.spacing(0.6),
-  },
-  remove: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-  },
-})
-const useStyles = makeStyles(styles)
-
 export default function CartItem({ product, updateQuantity, remove }) {
   const [open, setOpen] = useState(false)
   const classes = useStyles()

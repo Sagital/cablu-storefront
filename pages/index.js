@@ -1,25 +1,46 @@
 import React from 'react'
-import { Container, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import useLazyState from 'react-storefront/hooks/useLazyState'
-import CmsSlot from 'react-storefront/CmsSlot'
 import LoadMask from 'react-storefront/LoadMask'
 import Head from 'next/head'
 import createLazyProps from 'react-storefront/props/createLazyProps'
 import fetchFromAPI from 'react-storefront/props/fetchFromAPI'
+import BlockSlideShow from '../components/blocks/BlockSlideShow'
 
-const useStyles = makeStyles(theme => ({
-  main: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    textAlign: 'center',
-    margin: theme.spacing(10, 0, 0, 0),
-  },
-}))
+// const useStyles = makeStyles(theme => ({
+//   main: {
+//     display: 'flex',
+//     alignItems: 'center',
+//     flexDirection: 'column',
+//     textAlign: 'center',
+//     margin: theme.spacing(10, 0, 0, 0),
+//   },
+// }))
+
+// export const getServerSideProps: GetServerSideProps<PageProps> = async () => ({
+//   props: {
+//     initData: {
+//       featuredProducts: await shopApi.getPopularProducts({ limit: 8 }),
+//       bestsellers: await shopApi.getPopularProducts({ limit: 7 }),
+//       latestProducts: await shopApi.getLatestProducts({ limit: 8 }),
+//       productColumns: [
+//         {
+//           title: 'Top Rated Products',
+//           products: await shopApi.getTopRatedProducts({ limit: 3 }),
+//         },
+//         {
+//           title: 'Special Offers',
+//           products: await shopApi.getDiscountedProducts({ limit: 3 }),
+//         },
+//         {
+//           title: 'Bestsellers',
+//           products: await shopApi.getPopularProducts({ limit: 3 }),
+//         },
+//       ],
+//     },
+//   },
+// })
 
 export default function Index(lazyProps) {
-  const classes = useStyles()
   const [state] = useLazyState(lazyProps)
 
   return (
@@ -29,18 +50,14 @@ export default function Index(lazyProps) {
           <title>{state.pageData.title}</title>
         </Head>
       )}
-      <Container maxWidth="lg">
-        {state.loading ? (
-          <LoadMask fullscreen />
-        ) : (
-          <div className={classes.main}>
-            <Typography variant="h3" component="h1" gutterBottom color="primary">
-              {state.pageData.slots.heading}
-            </Typography>
-            <CmsSlot>{state.pageData.slots.description}</CmsSlot>
-          </div>
-        )}
-      </Container>
+
+      {state.loading ? (
+        <LoadMask fullscreen />
+      ) : (
+        <>
+          <BlockSlideShow withDepartments />
+        </>
+      )}
     </>
   )
 }

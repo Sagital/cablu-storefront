@@ -829,7 +829,7 @@ const convertProduct = product => {
   return {
     id: product.defaultVariant.id,
     url: '/p/' + product.defaultVariant.id,
-    name: product.defaultVariant.name,
+    name: product.name,
     price: 10.99, // the price as a number
     priceText: '$10.99', // the price as formatted text with currency
     description: 'product description', // the product description

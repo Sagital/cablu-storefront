@@ -15,11 +15,12 @@ export default async function pdp(req, res) {
   return res.json(pageData)
 }
 
+// TODO move this to salero
 function convertProduct(variant) {
   return {
     id: variant.id,
     url: '/p/' + variant.id,
-    name: variant.name,
+    name: variant.product.name,
     price: 10.99, // the price as a number
     priceText: '$10.99', // the price as formatted text with currency
     description: 'product description', // the product description
@@ -30,7 +31,7 @@ function convertProduct(variant) {
         {
           // an array of full size images
           src: variant.product.media[0].url, // the URL of the full size image
-          alt: variant.product.media[0].url.alt, // alt text for the full size image
+          alt: variant.product.media[0].alt, // alt text for the full size image
           type: 'image', // "image" or "video" - by default entries will be treated as images
           // magnify: {
           //   // optional - provides a high-res image for manigfication on hover in desktop browsers
