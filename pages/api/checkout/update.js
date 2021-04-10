@@ -34,12 +34,7 @@ export default async function handler(req, res) {
         checkoutShippingMethodUpdate(checkoutId, shippingMethodId),
       ])
 
-      console.log('updated method')
-      console.log(shippingAddressUpdate)
-      console.log(shippingMethodUpdate)
-      console.log(billingAddressUpdate)
       // TODO error handling if checkout errors
-      console.log(emailUpdate)
 
       const shippingPrice = {
         net: shippingMethodUpdate.shippingPrice.net.amount,

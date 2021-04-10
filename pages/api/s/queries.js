@@ -5,6 +5,7 @@ export default gql`
     category(slug: $slug) {
       id
       name
+      slug
       products(channel: "default-channel", first: 100) {
         edges {
           node {
@@ -23,6 +24,10 @@ export default gql`
               pricing {
                 price {
                   net {
+                    currency
+                    amount
+                  }
+                  gross {
                     currency
                     amount
                   }

@@ -85,9 +85,6 @@ export default function Checkout() {
 
   // want to execute it just once when the session is loaded
   if (!session.loading && !sessionLoaded) {
-    console.log('session')
-    console.log(session)
-
     // TODO what happens if the session does not have this data ?
     if (session.email) {
       setEmail(session.email)

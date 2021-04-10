@@ -53,25 +53,12 @@ function Product(props: ProductProps) {
 
   let prices
 
-  if (product.compareAtPrice) {
-    prices = (
-      <Fragment>
-        <span className="product__new-price">
-          <CurrencyFormat value={product.price} />
-        </span>{' '}
-        <span className="product__old-price">
-          <CurrencyFormat value={product.compareAtPrice} />
-        </span>
-      </Fragment>
-    )
-  } else {
-    prices = <CurrencyFormat value={product.price} />
-  }
+  prices = <CurrencyFormat value={product.price} />
 
   return (
     <div className={`product product--layout--${layout}`}>
       <div className="product__content">
-        <ProductGallery layout={layout} images={product.media.full} />
+        <ProductGallery layout={layout} images={product.media} />
 
         <div className="product__info">
           <div className="product__wishlist-compare">
@@ -111,16 +98,16 @@ function Product(props: ProductProps) {
             />
           </div>
           <h1 className="product__name">{product.name}</h1>
-          <div className="product__rating">
-            <div className="product__rating-stars">
-              <Rating value={product.rating} />
-            </div>
-            <div className="product__rating-legend">
-              <AppLink href="/">{`${product.reviews} Reviews`}</AppLink>
-              <span>/</span>
-              <AppLink href="/">Write A Review</AppLink>
-            </div>
-          </div>
+          {/*<div className="product__rating">*/}
+          {/*  <div className="product__rating-stars">*/}
+          {/*    <Rating value={product.rating} />*/}
+          {/*  </div>*/}
+          {/*  <div className="product__rating-legend">*/}
+          {/*    <AppLink href="/">{`${product.reviews} Reviews`}</AppLink>*/}
+          {/*    <span>/</span>*/}
+          {/*    <AppLink href="/">Write A Review</AppLink>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
           <div className="product__description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare, mi in ornare
             elementum, libero nibh lacinia urna, quis convallis lorem erat at purus. Maecenas eu

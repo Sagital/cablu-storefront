@@ -1,0 +1,1251 @@
+{
+  "conectica-audio": [
+    {
+      "id": "QXR0cmlidXRlOjcwOA==",
+      "name": "Destinat pentru",
+      "slug": "audio-adapter-destination",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5MA==",
+          "slug": "adaptare-semnal",
+          "name": "Adaptare semnal"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5MQ==",
+          "slug": "semnal",
+          "name": "Semnal"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcwOQ==",
+      "name": "Model adaptor",
+      "slug": "audio-adapter-model",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5Mg==",
+          "slug": "cu-cablu",
+          "name": "Cu cablu"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5Mw==",
+          "slug": "fara-cablu",
+          "name": "Fara cablu"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5NA==",
+          "slug": "wireless",
+          "name": "Wireless"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxMA==",
+      "name": "Conector tip 1",
+      "slug": "audio-adapter-connector-type-1",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5NQ==",
+          "slug": "jack-25-mm",
+          "name": "Jack 2.5 mm"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5Ng==",
+          "slug": "jack-35-mm",
+          "name": "Jack 3.5 mm"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5Nw==",
+          "slug": "jack-63-mm",
+          "name": "Jack 6.3 mm"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5OA==",
+          "slug": "usb-tip-c",
+          "name": "USB Tip C"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzM5OQ==",
+          "slug": "8-pin-lightning",
+          "name": "8-pin Lightning"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwMA==",
+          "slug": "bluetooth",
+          "name": "Bluetooth"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwMQ==",
+          "slug": "caseta-audio",
+          "name": "Caseta audio"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwMg==",
+          "slug": "usb",
+          "name": "USB"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwMw==",
+          "slug": "1-x-rca",
+          "name": "1 x RCA "
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwNA==",
+          "slug": "2-x-rca",
+          "name": "2 x RCA"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwNQ==",
+          "slug": "optic",
+          "name": "Optic"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxMQ==",
+      "name": "Tip conector 1",
+      "slug": "audio-adapter-type-connector-1",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwNg==",
+          "slug": "mama",
+          "name": "Mama"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwNw==",
+          "slug": "tata",
+          "name": "Tata"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwOA==",
+          "slug": "wireless",
+          "name": "Wireless"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxMg==",
+      "name": "Unghi orientare conector 1",
+      "slug": "audio-adapter-angle-connector-1",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQwOQ==",
+          "slug": "drept",
+          "name": "Drept"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxMA==",
+          "slug": "la-90-de-grade",
+          "name": "La 90 de grade"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxMw==",
+      "name": "Conector tip 2",
+      "slug": "audio-adapter-connector-type-2",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxMQ==",
+          "slug": "bluetooth",
+          "name": "Bluetooth"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxMg==",
+          "slug": "jack-25-mm",
+          "name": "Jack 2.5 mm"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxMw==",
+          "slug": "jack-35-mm",
+          "name": "Jack 3.5 mm"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxNA==",
+          "slug": "jack-63-mm",
+          "name": "Jack 6.3 mm"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxNQ==",
+          "slug": "usb-tip-c",
+          "name": "USB Tip C"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxNg==",
+          "slug": "8-pin-lightning",
+          "name": "8-pin Lightning"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxNw==",
+          "slug": "1-x-rca",
+          "name": "1 x RCA "
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxOA==",
+          "slug": "2-x-rca",
+          "name": "2 x RCA"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQxOQ==",
+          "slug": "3-x-rca",
+          "name": "3 x RCA"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyMA==",
+          "slug": "optic",
+          "name": "Optic"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6NDA5NQ==",
+          "slug": "2-x-jack-35-mm",
+          "name": "2 x Jack 3.5 mm"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxNA==",
+      "name": "Tip conector 2",
+      "type": "check",
+      "slug": "audio-adapter-type-connector-2",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyMQ==",
+          "slug": "mama",
+          "name": "Mama"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyMg==",
+          "slug": "tata",
+          "name": "Tata"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyMw==",
+          "slug": "wireless",
+          "name": "Wireless"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxNQ==",
+      "name": "Unghi orientare conector 2",
+      "slug": "audio-adapter-angle-connector-2",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyNA==",
+          "slug": "drept",
+          "name": "Drept"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyNQ==",
+          "slug": "la-90-de-grade",
+          "name": "La 90 de grade"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxNg==",
+      "name": "Proprietati",
+      "slug": "audio-adapter-properties",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyNg==",
+          "slug": "conectori-auriti",
+          "name": "Conectori auriti"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyNw==",
+          "slug": "conectori-nichelati",
+          "name": "Conectori nichelati"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyOA==",
+          "slug": "conector-jack-3-pini",
+          "name": "Conector Jack 3 pini"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQyOQ==",
+          "slug": "conector-jack-4-pini",
+          "name": "Conector Jack 4 pini"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzMA==",
+          "slug": "receptor-audio",
+          "name": "Receptor audio"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzMQ==",
+          "slug": "stereo",
+          "name": "Stereo"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzMg==",
+          "slug": "mono",
+          "name": "Mono"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6NDA5Ng==",
+          "slug": "conector-jack-4-pini-la-2-x-conector-jack-3-pini",
+          "name": "Conector Jack 4 pini la 2 x Conector Jack 3 pini"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxNw==",
+      "name": "Material carcasa",
+      "slug": "audio-adapter-housing-material",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzMw==",
+          "slug": "abs",
+          "name": "ABS"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzNA==",
+          "slug": "aluminiu",
+          "name": "Aluminiu"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzNQ==",
+          "slug": "aliaj",
+          "name": "Aliaj"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzNg==",
+          "slug": "plastic",
+          "name": "Plastic"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzNw==",
+          "slug": "pvc",
+          "name": "PVC"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQzOA==",
+          "slug": "metal",
+          "name": "Metal"
+        }
+      ]
+    },
+    {
+      "id": "QXR0cmlidXRlOjcxOQ==",
+      "name": "Culoare",
+      "slug": "audio-adapter-colour",
+      "type": "check",
+      "values": [
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQ0MA==",
+          "slug": "alb",
+          "name": "Alb"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQ0MQ==",
+          "slug": "albastru",
+          "name": "Albastru"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQ0Mg==",
+          "slug": "argintiu",
+          "name": "Argintiu"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQ0Mw==",
+          "slug": "auriu",
+          "name": "Auriu"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQ0NA==",
+          "slug": "gri",
+          "name": "Gri"
+        },
+        {
+          "id": "QXR0cmlidXRlVmFsdWU6MzQ0NQ==",
+          "slug": "negru",
+          "name": "Negru"
+        }
+      ]
+    }
+  ],
+  "cabluri-audio" : [
+      {
+        "id": "QXR0cmlidXRlOjgzMA==",
+        "name": "Conector tip 1",
+        "type": "check",
+        "slug": "audio-cable-connector-type-1",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3Nw==",
+            "slug": "jack-35mm",
+            "name": "Jack 3.5mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3OA==",
+            "slug": "2-x-jack-35-mm",
+            "name": "2 x Jack 3.5 mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3OQ==",
+            "slug": "jack-25mm",
+            "name": "Jack 2.5mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4MA==",
+            "slug": "jack-63mm",
+            "name": "Jack 6.3mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4MQ==",
+            "slug": "rca",
+            "name": "RCA"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4Mg==",
+            "slug": "2-x-rca",
+            "name": "2 x RCA"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4Mw==",
+            "slug": "3-x-rca",
+            "name": "3 x RCA"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4NA==",
+            "slug": "optic-toslink",
+            "name": "Optic Toslink"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzMQ==",
+        "name": "Tip conector 1",
+        "slug": "audio-cable-type-connector-1",
+        "type": "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4NQ==",
+            "slug": "mama",
+            "name": "Mama"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4Ng==",
+            "slug": "tata",
+            "name": "Tata"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzMg==",
+        "name": "Unghi orientare conector 1",
+        "slug": "audio-cable-angle-connector-1",
+        "type": "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4Nw==",
+            "slug": "drept",
+            "name": "Drept"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4OA==",
+            "slug": "la-90-de-grade",
+            "name": "La 90 de grade"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzMw==",
+        "name": "Conector tip 2",
+        "type": "check",
+        "slug": "audio-cable-connector-type-2",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk4OQ==",
+            "slug": "jack-35mm",
+            "name": "Jack 3.5mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5MA==",
+            "slug": "2-x-jack-35-mm",
+            "name": "2 x Jack 3.5 mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5MQ==",
+            "slug": "jack-25mm",
+            "name": "Jack 2.5mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5Mg==",
+            "slug": "jack-63mm",
+            "name": "Jack 6.3mm"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5Mw==",
+            "slug": "rca",
+            "name": "RCA"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5NA==",
+            "slug": "2-x-rca",
+            "name": "2 x RCA"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5NQ==",
+            "slug": "3-x-rca",
+            "name": "3 x RCA"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5Ng==",
+            "slug": "optic-toslink",
+            "name": "Optic Toslink"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzNA==",
+        "name": "Tip conector 2",
+        "slug": "audio-cable-type-connector-2",
+        "type": "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5Nw==",
+            "slug": "mama",
+            "name": "Mama"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5OA==",
+            "slug": "tata",
+            "name": "Tata"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzNQ==",
+        "name": "Unghi orientare conector 2",
+        "slug": "audio-cable-angle-connector-2",
+        "type": "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk5OQ==",
+            "slug": "drept",
+            "name": "Drept"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwMA==",
+            "slug": "la-90-de-grade",
+            "name": "La 90 de grade"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzNg==",
+        "name": "Invelis exterior cablu",
+        "type": "check",
+        "slug": "audio-cable-outer-cover",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwMQ==",
+            "slug": "pvc",
+            "name": "PVC"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwMg==",
+            "slug": "plastic",
+            "name": "Plastic"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwMw==",
+            "slug": "fibre-textile-impletite",
+            "name": "Fibre textile impletite"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwNA==",
+            "slug": "piele-ecologica",
+            "name": "Piele ecologica"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwNQ==",
+            "slug": "siliconic",
+            "name": "Siliconic"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwNg==",
+            "slug": "metalic",
+            "name": "Metalic"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzNw==",
+        "name": "Culoare cablu",
+        "type": "check",
+        "slug": "audio-cable-colour",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwNw==",
+            "slug": "alb",
+            "name": "Alb"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwOA==",
+            "slug": "albastru",
+            "name": "Albastru"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAwOQ==",
+            "slug": "negru",
+            "name": "Negru"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxMA==",
+            "slug": "rosu",
+            "name": "Rosu"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxMQ==",
+            "slug": "verde",
+            "name": "Verde"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgzOA==",
+        "name": "Proprietati",
+        "type": "check",
+        "slug": "audio-cable-properties",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxMg==",
+            "slug": "conector-jack-3-pini",
+            "name": "conector Jack 3 pini"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxMw==",
+            "slug": "conector-jack-4-pini",
+            "name": "conector jack 4 pini"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxNA==",
+            "slug": "conectori-auriti",
+            "name": "conectori auriti"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxNQ==",
+            "slug": "conectori-nichelati",
+            "name": "conectori nichelati"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgyOA==",
+        "name": "Destinat pentru",
+        "type": "check",
+        "slug": "audio-cable-destination",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk1OQ==",
+            "slug": "semnal",
+            "name": "Semnal"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2MA==",
+            "slug": "prelungire-semnal",
+            "name": "Prelungire semnal"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjgyOQ==",
+        "name": "Lungime",
+        "type": "check",
+        "slug": "audio-cable-length",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2MQ==",
+            "slug": "010-m",
+            "name": "0.10 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2Mg==",
+            "slug": "015-m",
+            "name": "0.15 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2Mw==",
+            "slug": "020-m",
+            "name": "0.20 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2NA==",
+            "slug": "025-m",
+            "name": "0.25 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2NQ==",
+            "slug": "030-m",
+            "name": "0.30 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2Ng==",
+            "slug": "050-m",
+            "name": "0.50 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2Nw==",
+            "slug": "060-m",
+            "name": "0.60 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2OA==",
+            "slug": "1-m",
+            "name": "1 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk2OQ==",
+            "slug": "150-m",
+            "name": "1.50 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3MA==",
+            "slug": "2-m",
+            "name": "2 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3MQ==",
+            "slug": "250-m",
+            "name": "2.50 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3Mg==",
+            "slug": "3-m",
+            "name": "3 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3Mw==",
+            "slug": "5-m",
+            "name": "5 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3NA==",
+            "slug": "10-m",
+            "name": "10 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3NQ==",
+            "slug": "15-m",
+            "name": "15 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6Mzk3Ng==",
+            "slug": "20-m",
+            "name": "20 m"
+          }
+        ]
+      }
+  ],
+  "cabluri-video-multimedia":
+
+    [
+      {
+        "id": "QXR0cmlidXRlOjgzOQ==",
+        "name": "Destinat pentru",
+        "slug": "video-cable-destination",
+        "type" : "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxNg==",
+            "slug": "semnal",
+            "name": "Semnal"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxNw==",
+            "slug": "prelungire-semnal",
+            "name": "Prelungire semnal"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0MA==",
+        "name": "Model / Versiune",
+        "slug": "video-cable-model",
+        "type" : "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxOA==",
+            "slug": "dual-link",
+            "name": "Dual Link"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAxOQ==",
+            "slug": "single-link",
+            "name": "Single Link"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyMA==",
+            "slug": "v11",
+            "name": "v.1.1"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyMQ==",
+            "slug": "v12",
+            "name": "v.1.2"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyMg==",
+            "slug": "v13",
+            "name": "v.1.3"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyMw==",
+            "slug": "v14",
+            "name": "v.1.4"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyNA==",
+            "slug": "v20",
+            "name": "v.2.0"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyNQ==",
+            "slug": "v21",
+            "name": "v.2.1"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyNg==",
+            "slug": "universal",
+            "name": "universal"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyNw==",
+            "slug": "dedicat",
+            "name": "dedicat"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0MQ==",
+        "name": "Lungime",
+        "slug": "video-cable-length",
+        "type" : "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyOA==",
+            "slug": "010-m",
+            "name": "0.10 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAyOQ==",
+            "slug": "015-m",
+            "name": "0.15 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzMA==",
+            "slug": "020-m",
+            "name": "0.20 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzMQ==",
+            "slug": "025-m",
+            "name": "0.25 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzMg==",
+            "slug": "030-m",
+            "name": "0.30 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzMw==",
+            "slug": "050-m",
+            "name": "0.50 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzNA==",
+            "slug": "060-m",
+            "name": "0.60 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzNQ==",
+            "slug": "1-m",
+            "name": "1 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzNg==",
+            "slug": "150-m",
+            "name": "1.50 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzNw==",
+            "slug": "180-m",
+            "name": "1.80 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzOA==",
+            "slug": "2-m",
+            "name": "2 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDAzOQ==",
+            "slug": "250-m",
+            "name": "2.50 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0MA==",
+            "slug": "3-m",
+            "name": "3 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0MQ==",
+            "slug": "5-m",
+            "name": "5 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0Mg==",
+            "slug": "10-m",
+            "name": "10 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0Mw==",
+            "slug": "15-m",
+            "name": "15 m"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0NA==",
+            "slug": "20-m",
+            "name": "20 m"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0Mg==",
+        "name": "Conector tip 1",
+        "type" : "check",
+        "slug": "video-cable-connector-type-1",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0NQ==",
+            "slug": "displayport",
+            "name": "DisplayPort"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0Ng==",
+            "slug": "dvi",
+            "name": "DVI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0Nw==",
+            "slug": "hdmi",
+            "name": "HDMI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0OA==",
+            "slug": "minidisplayport",
+            "name": "miniDisplayPort"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA0OQ==",
+            "slug": "minihdmi",
+            "name": "miniHDMI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1MA==",
+            "slug": "microhdmi",
+            "name": "microHDMI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1MQ==",
+            "slug": "usb-tip-c",
+            "name": "USB Tip C"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1Mg==",
+            "slug": "vga",
+            "name": "VGA"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0Mw==",
+        "name": "Tip conector 1",
+        "type" : "check",
+        "slug": "video-cable-type-connector-1",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1Mw==",
+            "slug": "mama",
+            "name": "Mama"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1NA==",
+            "slug": "tata",
+            "name": "Tata"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0NA==",
+        "name": "Unghi orientare conector 1",
+        "slug": "video-cable-angle-connector-1",
+        "type" : "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1NQ==",
+            "slug": "drept",
+            "name": "Drept"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1Ng==",
+            "slug": "la-90-grade",
+            "name": "La 90 grade"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1Nw==",
+            "slug": "180-grade",
+            "name": "180 grade"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1OA==",
+            "slug": "360-grade",
+            "name": "360 grade"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0NQ==",
+        "name": "Conector tip 2",
+        "slug": "video-cable-connector-type-2",
+        "type" : "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA1OQ==",
+            "slug": "displayport",
+            "name": "DisplayPort"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2MA==",
+            "slug": "dvi",
+            "name": "DVI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2MQ==",
+            "slug": "hdmi",
+            "name": "HDMI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2Mg==",
+            "slug": "minidisplayport",
+            "name": "miniDisplayPort"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2Mw==",
+            "slug": "minihdmi",
+            "name": "miniHDMI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2NA==",
+            "slug": "microhdmi",
+            "name": "microHDMI"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2NQ==",
+            "slug": "usb-tip-c",
+            "name": "USB Tip C"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2Ng==",
+            "slug": "vga",
+            "name": "VGA"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0Ng==",
+        "name": "Tip conector 2",
+        "type" : "check",
+        "slug": "video-cable-type-connector-2",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2Nw==",
+            "slug": "mama",
+            "name": "Mama"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2OA==",
+            "slug": "tata",
+            "name": "Tata"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0Nw==",
+        "name": "Unghi orientare conector 2",
+        "slug": "video-cable-angle-connector-2",
+        "type" : "check",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA2OQ==",
+            "slug": "drept",
+            "name": "Drept"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3MA==",
+            "slug": "la-90-grade",
+            "name": "La 90 grade"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3MQ==",
+            "slug": "180-grade",
+            "name": "180 grade"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3Mg==",
+            "slug": "360-grade",
+            "name": "360 grade"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0OA==",
+        "name": "Invelis exterior",
+        "type" : "check",
+        "slug": "video-cable-outer-cover",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3Mw==",
+            "slug": "pvc",
+            "name": "PVC"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3NA==",
+            "slug": "plastic",
+            "name": "Plastic"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3NQ==",
+            "slug": "fibre-textile-impletite",
+            "name": "Fibre textile impletite"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg0OQ==",
+        "name": "Proprietati",
+        "type" : "check",
+        "slug": "video-cable-properties",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3Ng==",
+            "slug": "rezolutie-hd",
+            "name": "rezolutie HD"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3Nw==",
+            "slug": "rezolutie-full-hd",
+            "name": "rezolutie Full HD"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3OA==",
+            "slug": "rezolutie-2k",
+            "name": "rezolutie 2K"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA3OQ==",
+            "slug": "rezolutie-4k-uhd",
+            "name": "rezolutie 4K UHD"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4MA==",
+            "slug": "rezolutie-8k",
+            "name": "rezolutie 8K"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4MQ==",
+            "slug": "30hz",
+            "name": "30Hz"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4Mg==",
+            "slug": "60hz",
+            "name": "60Hz"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4Mw==",
+            "slug": "120hz",
+            "name": "120Hz"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4NA==",
+            "slug": "ethernet",
+            "name": "Ethernet"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4NQ==",
+            "slug": "arc",
+            "name": "ARC"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4Ng==",
+            "slug": "3d",
+            "name": "3D"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4Nw==",
+            "slug": "transmisie-video",
+            "name": "transmisie video"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4OA==",
+            "slug": "transmisie-video-si-audio",
+            "name": "transmisie video si audio"
+          }
+        ]
+      },
+      {
+        "id": "QXR0cmlidXRlOjg1MA==",
+        "name": "Culoare",
+        "type" : "check",
+        "slug": "video-cable-colour",
+        "values": [
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA4OQ==",
+            "slug": "alb",
+            "name": "Alb"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA5MA==",
+            "slug": "albastru",
+            "name": "Albastru"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA5MQ==",
+            "slug": "rosu",
+            "name": "Rosu"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA5Mg==",
+            "slug": "gri",
+            "name": "Gri"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA5Mw==",
+            "slug": "negru",
+            "name": "Negru"
+          },
+          {
+            "id": "QXR0cmlidXRlVmFsdWU6NDA5NA==",
+            "slug": "verde",
+            "name": "Verde"
+          }
+        ]
+      }
+
+  ]
+
+}
+
+

@@ -25,10 +25,10 @@ function Suggestions(props: SuggestionsProps) {
     products &&
     products.map(product => (
       <li key={product.id} className="suggestions__item">
-        {product.images && product.images.length > 0 && (
+        {product.thumbnail && (
           <div className="suggestions__item-image product-image">
             <div className="product-image__body">
-              <img className="product-image__img" src={product.images[0]} alt="" />
+              <img className="product-image__img" src={product.thumbnail.src} alt="" />
             </div>
           </div>
         )}

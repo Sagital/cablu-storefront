@@ -1,5 +1,5 @@
 // react
-import { ReactNode, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
 // third-party
 import classNames from 'classnames'
@@ -31,6 +31,8 @@ interface ProductsViewProps {
   layout?: ProductsViewLayout
   grid?: ProductsViewGrid
   offcanvas?: ProductsViewOffcanvas
+  sortValue: string
+  onSortChange: (sort: string) => {}
   openSidebarFn?: () => void
   store: any
 }
@@ -55,21 +57,22 @@ function ProductsView(props: ProductsViewProps) {
   // const productsList = useShopProductsList();
   const productsList: IProductsList = {
     filters: [],
-    from: 0,
+    from: 1,
     limit: 0,
     page: 0,
     pages: 0,
-    sort: '',
-    to: 0,
-    total: 0,
+    sort: store.pageData.sort || 'default',
+    to: store.pageData.products.length,
+    total: store.pageData.products.length,
     items: store.pageData.products,
   }
 
-  // const options = useShopOptions()
   // const filterValues = useShopFilterValues()
   //
   // const handlePageChange = useSetOption('page', parseFloat)
-  // const handleSortChange = useSetOption('sort', event => event.target.value)
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    props.onSortChange(e.target.value)
+  }
   // const handleLimitChange = useSetOption('limit', event => parseFloat(event.target.value))
 
   //  const shopResetFilters = useShopResetFiltersThunk()
@@ -152,8 +155,8 @@ function ProductsView(props: ProductsViewProps) {
                 <select
                   id="view-options-sort"
                   className="form-control form-control-sm"
-                  // value={options.sort || productsList.sort}
-                  // onChange={handleSortChange}
+                  value={props.sortValue}
+                  onChange={handleSortChange}
                 >
                   <option value="default">Default</option>
                   <option value="name_asc">Name (A-Z)</option>
@@ -170,7 +173,6 @@ function ProductsView(props: ProductsViewProps) {
                   // value={options.limit || productsList.limit}
                   // onChange={handleLimitChange}
                 >
-                  <option value="6">6</option>
                   <option value="12">12</option>
                   <option value="18">18</option>
                   <option value="24">24</option>

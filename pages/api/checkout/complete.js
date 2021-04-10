@@ -2,18 +2,12 @@ import { checkoutComplete, checkoutPaymentCreate } from '../../../saleor/api/che
 import { deleteCartTokenCookie } from '../../../saleor/cookies'
 
 export default async function handler(req, res) {
-  console.log('in checkout update')
-
   let { checkoutId, paymentMethodId, totalPrice } = req.body
 
   try {
     await checkoutPaymentCreate(checkoutId, paymentMethodId, totalPrice)
 
-    console.log('aaaa')
-
     const order = await checkoutComplete(checkoutId)
-
-    console.log(order)
 
     deleteCartTokenCookie(res)
 

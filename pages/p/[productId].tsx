@@ -1,10 +1,4 @@
 import React, { useContext, useState, useEffect, useRef } from 'react'
-import clsx from 'clsx'
-import qs from 'qs'
-import useLazyState from 'react-storefront/hooks/useLazyState'
-import Breadcrumbs from 'react-storefront/Breadcrumbs'
-import CmsSlot from 'react-storefront/CmsSlot'
-import MediaCarousel from 'react-storefront/carousel/MediaCarousel'
 import PWAContext from 'react-storefront/PWAContext'
 import { Container, Grid, Typography, Hidden, Button } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
@@ -29,11 +23,20 @@ import { IProduct } from '../../interfaces/product'
 import { IShopCategory } from '../../interfaces/category'
 import url from '../../services/url'
 import { Fragment } from 'react'
+import Compare16Svg from '../../svg/compare-16.svg'
 import ProductTabs from '../../components/product/ProductTabs'
 import BlockProductsCarousel from '../../components/blocks/BlockProductsCarousel'
 import PageHeader from '../../components/shared/PageHeader'
 import { Head } from 'next/document'
 import ProductComponent from '../../components/shared/Product'
+import ProductGallery from '../../components/shared/ProductGallery'
+import AsyncAction from '../../components/shared/AsyncAction'
+import classNames from 'classnames'
+import Wishlist16Svg from '../../svg/wishlist-16.svg'
+
+import AppLink from '../../components/shared/AppLink'
+import InputNumber from '../../components/shared/InputNumber'
+import CurrencyFormat from '../../components/shared/CurrencyFormat'
 
 const fetchVariant = fetchLatest(fetch)
 
@@ -58,13 +61,31 @@ const Product = React.memo((props: { loading: false }) => {
   // const [state, updateState] = useLazyState(lazyProps, {
   //   pageData: { quantity: 1, carousel: { index: 0 } },
   // })
+  const [quantity, setQuantity] = useState<number | string>(1)
 
   const product = get(props, 'pageData.product') || {}
   const color = get(props, 'pageData.color') || {}
   const size = get(props, 'pageData.size') || {}
-  const quantity = get(props, 'pageData.quantity')
+  //const quantity = get(props, 'pageData.quantity')
   const { actions, session } = useContext(SessionContext)
   const { loading } = props
+
+  let prices
+
+  if (product.compareAtPrice) {
+    prices = (
+      <Fragment>
+        <span className="product__new-price">
+          <CurrencyFormat value={product.price} />
+        </span>{' '}
+        <span className="product__old-price">
+          <CurrencyFormat value={product.compareAtPrice} />
+        </span>
+      </Fragment>
+    )
+  } else {
+    prices = <CurrencyFormat value={product.price} />
+  }
 
   const [relatedProducts, setRelatedProducts] = useState<IProduct[]>([])
   const [categories, setCategories] = useState<IShopCategory[]>([])
@@ -72,6 +93,24 @@ const Product = React.memo((props: { loading: false }) => {
 
   // This is provided when <ForwardThumbnail> is wrapped around product links
   const { thumbnail } = useContext(PWAContext)
+
+  const cartAddItem = (p: IProduct, a: Array<{}>, quantity: number) => {
+    return Promise.resolve()
+  }
+  const wishlistAddItem = (p: IProduct) => {
+    return new Promise(() => {})
+  }
+  const compareAddItem = (p: IProduct) => {
+    return new Promise(() => {})
+  }
+
+  const addToCart = (p: IProduct) => {
+    if (typeof quantity === 'string') {
+      return Promise.resolve()
+    }
+
+    return cartAddItem(product, [], quantity)
+  }
 
   // Adds an item to the cart
   // const handleSubmit = async event => {
@@ -98,7 +137,6 @@ const Product = React.memo((props: { loading: false }) => {
 
   const breadcrumb = [
     { title: 'Home', url: url.home() },
-    { title: 'Shop', url: url.catalog() },
     { title: product.name, url: url.product(product) },
   ]
 
@@ -106,8 +144,75 @@ const Product = React.memo((props: { loading: false }) => {
     <Fragment>
       <div className="block">
         <div className="container">
-          <ProductComponent product={product} layout={layout} loading={loading} />
-          <ProductTabs />
+          <div className={`product product--layout--${layout}`}>
+            <div className="product__content">
+              <ProductGallery layout={layout} images={product.media} />
+
+              <div className="product__info">
+                <h1 className="product__name">{product.name}</h1>
+
+                <ul className="product__meta">
+                  <li className="product__meta-availability">
+                    Availability:{' '}
+                    {product.quantityAvailable > 0 ? (
+                      <span className="text-success">In Stock</span>
+                    ) : (
+                      <span className="text-warning">Out of Stock</span>
+                    )}
+                  </li>
+                  <li>SKU: {product.sku}</li>
+                </ul>
+              </div>
+
+              <div className="product__sidebar">
+                <div className="product__availability">
+                  Availability: <span className="text-success">In Stock</span>
+                </div>
+
+                <div className="product__prices">{prices}</div>
+
+                <form className="product__options">
+                  <div className="form-group product__option">
+                    <label htmlFor="product-quantity" className="product__option-label">
+                      Quantity
+                    </label>
+                    <div className="product__actions">
+                      <div className="product__actions-item">
+                        <InputNumber
+                          id="product-quantity"
+                          aria-label="Quantity"
+                          className="product__quantity"
+                          size="lg"
+                          min={1}
+                          value={quantity}
+                          onChange={setQuantity}
+                        />
+                      </div>
+                      <div className="product__actions-item product__actions-item--addtocart">
+                        <AsyncAction
+                          action={() => addToCart(product)}
+                          render={({ run, loading }) => (
+                            <button
+                              type="button"
+                              onClick={run}
+                              disabled={!quantity}
+                              className={classNames('btn btn-primary btn-lg', {
+                                'btn-loading': loading,
+                              })}
+                            >
+                              Add to cart
+                            </button>
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <ProductTabs product={product} />
         </div>
       </div>
 
@@ -294,16 +399,7 @@ const Product = React.memo((props: { loading: false }) => {
 
 // @ts-ignore
 Product.getInitialProps = async context => {
-  console.log('in product')
-  console.log(context.pathname)
-  console.log(context.query)
-  console.log(context.asPath)
-
-  const result = await fetchFromAPI(context)
-
-  console.log(result)
-
-  return result
+  return await fetchFromAPI(context)
 }
 
 export default Product

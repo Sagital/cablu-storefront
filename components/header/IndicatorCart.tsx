@@ -60,11 +60,11 @@ function IndicatorCart() {
       )
     }
 
-    if (item.product.images.length) {
+    if (item.product.thumbnail) {
       image = (
         <div className="product-image dropcart__product-image">
           <AppLink href={url.product(item.product)} className="product-image__body">
-            <img className="product-image__img" src={item.product.images[0]} alt="" />
+            <img className="product-image__img" src={item.product.thumbnail.src} alt="" />
           </AppLink>
         </div>
       )

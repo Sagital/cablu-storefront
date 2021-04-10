@@ -45,61 +45,25 @@ function ProductCard(props: ProductCardProps) {
   const compareAddItem = (product: IProduct) => new Promise(() => {})
   const quickviewOpen = (slug: string) => new Promise(() => {})
 
-  const badges = []
   let image
   let price
   let features
 
-  if (product.badges?.includes('sale')) {
-    badges.push(
-      <div key="sale" className="product-card__badge product-card__badge--sale">
-        Sale
-      </div>
-    )
-  }
-  if (product.badges?.includes('hot')) {
-    badges.push(
-      <div key="hot" className="product-card__badge product-card__badge--hot">
-        Hot
-      </div>
-    )
-  }
-  if (product.badges?.includes('new')) {
-    badges.push(
-      <div key="new" className="product-card__badge product-card__badge--new">
-        New
-      </div>
-    )
-  }
-
-  if (product.media && product.media.thumbnails.length > 0) {
+  if (product.thumbnail) {
     image = (
       <div className="product-card__image product-image">
-        <AppLink href={product.url} className="product-image__body">
-          <img className="product-image__img" src={product.media.thumbnails[0].src} alt="" />
+        <AppLink href={'/p/' + product.id} className="product-image__body">
+          <img className="product-image__img" src={product.thumbnail.src} alt="" />
         </AppLink>
       </div>
     )
   }
 
-  if (product.compareAtPrice) {
-    price = (
-      <div className="product-card__prices">
-        <span className="product-card__new-price">
-          <CurrencyFormat value={product.price} />
-        </span>{' '}
-        <span className="product-card__old-price">
-          <CurrencyFormat value={product.compareAtPrice} />
-        </span>
-      </div>
-    )
-  } else {
-    price = (
-      <div className="product-card__prices">
-        <CurrencyFormat value={product.price} />
-      </div>
-    )
-  }
+  price = (
+    <div className="product-card__prices">
+      <CurrencyFormat value={product.price} />
+    </div>
+  )
 
   if (product.attributes && product.attributes.length) {
     features = (
@@ -131,11 +95,11 @@ function ProductCard(props: ProductCardProps) {
           </button>
         )}
       />
-      {badges.length > 0 && <div className="product-card__badges-list">{badges}</div>}
+
       {image}
       <div className="product-card__info">
         <div className="product-card__name">
-          <AppLink href={product.url}>{product.name}</AppLink>
+          <AppLink href={'/p/' + product.id}>{product.name}</AppLink>
         </div>
         {features}
       </div>

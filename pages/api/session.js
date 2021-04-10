@@ -1,5 +1,5 @@
 import { readCartTokenCookie } from '../../saleor/cookies'
-import { convertCheckout, convertShippingPrice, convertTotalPrice } from '../../saleor/converters'
+import { convertShippingPrice, convertTotalPrice } from '../../saleor/converters'
 import { getCheckout } from '../../saleor/api/checkout'
 import { getShopConfiguration } from '../../saleor/api/shop'
 

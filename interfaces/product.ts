@@ -1,8 +1,7 @@
-import { IFilter } from './filter'
-
 import { IShopCategory } from './category'
 import { IBrand } from './brand'
 import { IFilterableList, IPaginatedList } from './list'
+import { IFilter } from '../types'
 
 export interface IProductAttributeValue {
   slug: string
@@ -13,7 +12,7 @@ export interface IProductAttribute {
   slug: string
   name: string
   values: IProductAttributeValue[]
-  featured: boolean
+  featured?: boolean
 }
 
 export interface Image {
@@ -22,24 +21,16 @@ export interface Image {
 }
 
 export interface IProduct {
-  id: number
-  url: string
+  id: string
+  sku: string
   slug: string
   name: string
-  images: string[]
-  media: {
-    full: Image[]
-    thumbnails: Image[]
-  }
+  description: string
+  media: Image[]
+  thumbnail: Image
   price: number
-  compareAtPrice: number | null
-  brand: IBrand | null
-  badges: string[]
-  categories: IShopCategory[]
-  reviews: number
-  rating: number
   attributes: IProductAttribute[]
-  availability: string
+  quantityAvailable: number
 }
 
 export type IProductsList = IPaginatedList<IProduct> & IFilterableList<IProduct, IFilter>

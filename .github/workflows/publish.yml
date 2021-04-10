@@ -21,7 +21,7 @@ jobs:
       - name: Build and publish docker image
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: registry.sagital.ro/sagital/vue-storefront:${{ github.sha }}
+          name: registry.sagital.ro/sagital/react-storefront:${{ github.sha }}
           registry: registry.sagital.ro
           username: ${{ secrets.SAGITAL_REGISTRY_USERNAME }}
           password: ${{ secrets.SAGITAL_REGISTRY_PASSWORD }}

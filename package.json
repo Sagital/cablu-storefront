@@ -7,13 +7,14 @@
   "author": "",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "npm run dev",
+    "start": "next dev",
     "dev": "cross-env NODE_ENV=development nodemon server.js",
     "prod": "cross-env NODE_ENV=production node server.js",
     "build": "next build",
     "test": "jest",
     "deploy": "npm run build && xdn deploy",
-    "prettier": "prettier --write \"**/*.js\" \"!{node_modules,.next,.yalc}/**\""
+    "prettier": "prettier --write \"**/*.js\" \"!{node_modules,.next,.yalc}/**\"",
+    "graphql-codegen": "graphql-codegen --config codegen.yml"
   },
   "husky": {
     "hooks": {
@@ -32,6 +33,7 @@
     "classnames": "^2.3.1",
     "clsx": "^1.0.4",
     "cross-env": "^5.2.0",
+    "fsevents": "^2.3.2",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.11.0",
     "isomorphic-unfetch": "^3.0.0",
@@ -57,7 +59,14 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.21.3",
+    "@graphql-codegen/introspection": "1.18.1",
+    "@graphql-codegen/typescript": "1.21.1",
+    "@graphql-codegen/typescript-operations": "1.17.15",
+    "@graphql-codegen/typescript-react-apollo": "2.2.3",
+    "@types/express": "^4.17.11",
     "@types/lodash": "^4.14.168",
+    "@types/node-fetch": "^2.5.10",
     "@types/photoswipe": "^4.1.1",
     "@types/qs": "^6.9.6",
     "@types/react-slick": "^0.23.4",

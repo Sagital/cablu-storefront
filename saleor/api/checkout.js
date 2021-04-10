@@ -48,8 +48,6 @@ const addCheckoutLine = async (checkoutId, variantId, quantity) => {
     quantity,
   }
 
-  console.log(variables)
-
   try {
     const response = await client.mutate({
       mutation: gql`
@@ -59,7 +57,6 @@ const addCheckoutLine = async (checkoutId, variantId, quantity) => {
     })
 
     // TODO handle errors, insufficient stock. etc
-    console.log(JSON.stringify(response.data.checkoutLinesAdd.checkoutErrors))
 
     return response.data.checkoutLinesAdd.checkout
   } catch (e) {
@@ -231,8 +228,6 @@ const checkoutPaymentCreate = async (checkoutId, paymentMethodId, totalPrice) =>
     input: paymentInput,
   }
 
-  console.log(variables)
-
   let checkoutPaymentCreate = null
 
   try {
@@ -264,8 +259,6 @@ const checkoutComplete = async checkoutId => {
   const variables = {
     checkoutId,
   }
-
-  console.log(variables)
 
   let checkoutComplete = null
 

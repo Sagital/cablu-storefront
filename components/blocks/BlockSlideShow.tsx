@@ -27,7 +27,7 @@ const slickSettings = {
 
 const slides = [
   {
-    title: 'Big choice of<br>Plumbing products',
+    title: 'Big choice of<br>Cable products',
     text:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
     image_classic: {

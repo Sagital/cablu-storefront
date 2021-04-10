@@ -18,19 +18,14 @@ export default function Summary() {
   //const checkoutId = get(session, 'cart.id')
   // TODO payment method id may not be present because we can't get it from checkout
 
-  console.log(session)
-
   const completeCheckout = async () => {
-    console.log(session)
     const paymentMethodId = session.availablePaymentMethods[0].id
-    console.log(paymentMethodId)
+
     const order = await actions.completeCheckout({
       checkoutId: session.cart.id,
       totalPrice: session.totalPrice.gross,
       paymentMethodId,
     })
-
-    console.log(order)
   }
 
   return (

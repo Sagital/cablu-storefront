@@ -86,13 +86,9 @@ const productQuery = gql`
     product(id: $id) {
       id
       seoTitle
-      category {
-        id
-      }
       seoDescription
       name
       description
-      descriptionJson
       slug
       thumbnail {
         url
@@ -107,16 +103,32 @@ const productQuery = gql`
         }
       }
       updatedAt
-      images {
-        id
+      media {
         url
         alt
-      }
-      variants {
-        ...DefaultProductVariantFragment
+        sortOrder
+        oembedData
       }
       defaultVariant {
-        ...DefaultProductVariantFragment
+        id
+        name
+        sku
+        pricing {
+          price {
+            net {
+              amount
+            }
+            gross {
+              amount
+            }
+          }
+          discount {
+            net {
+              currency
+              amount
+            }
+          }
+        }
       }
     }
   }

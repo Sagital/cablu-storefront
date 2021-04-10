@@ -50,8 +50,6 @@ export default function Cart() {
   const { session, actions } = useContext(SessionContext)
   const items = get(session, 'cart.items')
 
-  console.log(items)
-
   const checkoutId = get(session, 'cart.id')
 
   const handleUpdateQuantity = (product, quantity) => {
