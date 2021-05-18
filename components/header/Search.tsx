@@ -16,44 +16,12 @@ import { useRouter } from 'next/router'
 // application
 import Cross20Svg from '../../svg/cross-20.svg'
 import Search20Svg from '../../svg/search-20.svg'
-// import shopApi, { GetSuggestionsOptions } from '../../api/shop';
+
 import Suggestions from './Suggestions'
-import { ICategory } from '../../interfaces/category'
+
 import { IProduct } from '../../interfaces/product'
-
-type CategoryWithDepth = ICategory & { depth: number }
-
-function useCategories() {
-  const [categories, setCategories] = useState<CategoryWithDepth[]>([])
-
-  useEffect(() => {
-    let canceled = false
-
-    const treeToList = (categories: ICategory[], depth = 0): CategoryWithDepth[] =>
-      categories.reduce(
-        (result: CategoryWithDepth[], category) => [
-          ...result,
-          { depth, ...category },
-          ...treeToList(category.children || [], depth + 1),
-        ],
-        []
-      )
-
-    // shopApi.getCategories({ depth: 1 }).then((categories: ICategory[]) => {
-    //   if (canceled) {
-    //     return
-    //   }
-    //
-    //   setCategories(treeToList(categories))
-    // })
-
-    return () => {
-      canceled = true
-    }
-  }, [setCategories])
-
-  return categories
-}
+import { GetSuggestionsOptions } from '../../types'
+import { useCategories } from '../../hooks/useCategory'
 
 export interface SearchProps {
   context: 'header' | 'mobile-header' | 'indicator'
@@ -121,25 +89,32 @@ function Search(props: SearchProps) {
 
     setQuery(query)
 
-    if (query === '') {
+    if (query.length < 3) {
       setHasSuggestions(false)
     } else {
       timer = setTimeout(() => {
-        // const options: GetSuggestionsOptions = { limit: 5 }
-        //
-        // if (category !== '[all]') {
-        //   options.category = category
-        // }
-        //
-        // shopApi.getSuggestions(query, options).then(products => {
-        //   if (canceled) {
-        //     return
-        //   }
-        //
-        //   setSuggestedProducts(products)
-        //   setHasSuggestions(products.length > 0)
-        //   setSuggestionsOpen(true)
-        // })
+        const options: GetSuggestionsOptions = { limit: 5, searchTerm: query }
+
+        if (category !== '[all]') {
+          options.categoryId = category
+        }
+
+        fetch('/api/suggestions', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(options),
+        })
+          .then(response => response.json())
+          .then(products => {
+            if (canceled) {
+              return
+            }
+            setSuggestedProducts(products)
+            setHasSuggestions(products.length > 0)
+            setSuggestionsOpen(true)
+          })
       }, 100)
     }
 
@@ -162,8 +137,21 @@ function Search(props: SearchProps) {
   // Close suggestions when the Escape key has been pressed.
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     // Escape.
-    if (event.which === 27) {
+
+    if (event.code === 'Escape') {
       close()
+    } else if (event.code === 'Enter') {
+      setHasSuggestions(false)
+      close()
+
+      const urlQuery: { searchTerm: string; categoryId?: string } = {
+        searchTerm: query,
+      }
+
+      if (category !== '[all]') {
+        urlQuery.categoryId = category
+      }
+      router.push({ pathname: '/search', query: urlQuery })
     }
   }
 
@@ -182,7 +170,7 @@ function Search(props: SearchProps) {
     )
 
   const categoryOptions = categories.map(category => (
-    <option key={category.slug} value={category.slug}>
+    <option key={category.id} value={category.id}>
       {'\u00A0'.repeat(4 * category.depth)}
       {category.name}
     </option>
@@ -191,7 +179,13 @@ function Search(props: SearchProps) {
   return (
     <div className={rootClasses} ref={wrapperRef} onBlur={handleBlur}>
       <div className="search__body">
-        <form className="search__form" action="">
+        <form
+          className="search__form"
+          action=""
+          onSubmit={e => {
+            e.preventDefault()
+          }}
+        >
           {context === 'header' && (
             <select
               className="search__categories"
@@ -217,7 +211,7 @@ function Search(props: SearchProps) {
             type="text"
             autoComplete="off"
           />
-          <button className="search__button search__button--type--submit" type="submit">
+          <button className="search__button search__button--type--submit">
             <Search20Svg />
           </button>
           {closeButton}

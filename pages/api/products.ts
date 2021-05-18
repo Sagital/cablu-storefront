@@ -1,12 +1,12 @@
-import qs from 'qs'
 import { getProducts } from '../../saleor/api/product'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function plp(req: NextApiRequest, res: NextApiResponse) {
-  const params: { [p: string]: unknown } = qs.parse(req.query as Record<string, string>)
+
+  const { categoryIds, filters, sort } = req.body
 
   // @ts-ignore
-  const products = await getProducts(params)
+  const products = await getProducts(categoryIds, filters, sort)
 
-  res.json({ products: products })
+  res.json(products)
 }

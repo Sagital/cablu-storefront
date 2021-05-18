@@ -2,7 +2,6 @@
 import { memo } from 'react'
 
 // third-party
-//import { FormattedMessage } from 'react-intl';
 
 // application
 import AppLink from '../shared/AppLink'
@@ -10,6 +9,7 @@ import LogoSvg from '../../svg/logo.svg'
 import NavPanel from './NavPanel'
 import Search from './Search'
 import Topbar from './Topbar'
+import { FormattedMessage } from 'react-intl'
 
 export type HeaderLayout = 'default' | 'compact'
 
@@ -34,10 +34,10 @@ function Header(props: HeaderProps) {
         </div>
         <div className="site-header__phone">
           <div className="site-header__phone-title">
-            {/*<FormattedMessage id="header.phoneLabel" defaultMessage="Customer Service" />*/}
+            <FormattedMessage id="header.phoneLabel" defaultMessage="Customer Service" />
           </div>
           <div className="site-header__phone-number">
-            {/*<FormattedMessage id="header.phone" defaultMessage="(800) 060-0730" />*/}
+            <FormattedMessage id="header.phone" defaultMessage="(800) 060-0730" />
           </div>
         </div>
       </div>

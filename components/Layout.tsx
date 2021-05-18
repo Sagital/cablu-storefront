@@ -1,50 +1,50 @@
 // react
-import { Fragment, PropsWithChildren } from 'react';
+import { Fragment, PropsWithChildren, useState } from 'react'
 
 // third-party
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify'
 
 // application
-import Footer from './footer/Footer';
-import Header, { HeaderLayout } from './header/Header';
-import MobileHeader from './mobile/MobileHeader';
-import MobileMenu from './mobile/MobileMenu';
-import Quickview from './shared/Quickview';
+import Footer from './footer/Footer'
+import Header, { HeaderLayout } from './header/Header'
+import MobileHeader from './mobile/MobileHeader'
+import MobileMenu from './mobile/MobileMenu'
+import Quickview from './shared/Quickview'
 
-export interface LayoutProps extends PropsWithChildren<{}>{
-    headerLayout: HeaderLayout;
+export interface LayoutProps extends PropsWithChildren<{}> {
+  headerLayout: HeaderLayout
 }
 
-function Layout(props : LayoutProps) {
-    const { children, headerLayout } = props;
+function Layout(props: LayoutProps) {
+  const { children, headerLayout } = props
 
-    return (
-        <Fragment>
-            <ToastContainer autoClose={5000} hideProgressBar />
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-            <Quickview />
+  return (
+    <Fragment>
+      <ToastContainer autoClose={5000} hideProgressBar />
 
-            <MobileMenu />
+      <Quickview />
 
-            <div className="site">
-                <header className="site__header d-lg-none">
-                    <MobileHeader />
-                </header>
+      <MobileMenu mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
 
-                <header className="site__header d-lg-block d-none">
-                    <Header layout={headerLayout} />
-                </header>
+      <div className="site">
+        <header className="site__header d-lg-none">
+          <MobileHeader mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
+        </header>
 
-                <div className="site__body">
-                    {children}
-                </div>
+        <header className="site__header d-lg-block d-none">
+          <Header layout={headerLayout} />
+        </header>
 
-                <footer className="site__footer">
-                    <Footer />
-                </footer>
-            </div>
-        </Fragment>
-    );
+        <div className="site__body">{children}</div>
+
+        <footer className="site__footer">
+          <Footer />
+        </footer>
+      </div>
+    </Fragment>
+  )
 }
 
-export default Layout;
+export default Layout

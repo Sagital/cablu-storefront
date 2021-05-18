@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Checkout() {
+export default function Checkout2() {
   const classes = useStyles()
 
   const router = useRouter()

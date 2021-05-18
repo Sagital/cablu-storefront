@@ -6,14 +6,15 @@ import {
   Address,
   Checkout,
   CheckoutLine,
-  PriceRangeInput,
-  VariantPricingInfo,
   TaxedMoney,
 } from './graphql'
 import { IProduct, IProductAttributeValue } from '../interfaces/product'
+import { Cart, CartLine } from '../components/types'
+import { ICheckout } from '../types'
 
 export function convertProductVariant(variant: ProductVariant) {
   const result: IProduct = {
+    isAvailable: variant.product.isAvailable || false,
     attributes: [],
     quantityAvailable: variant.quantityAvailable,
     media: [],
@@ -52,7 +53,8 @@ export function convertProductVariant(variant: ProductVariant) {
 
 export function convertProduct(product: Product) {
   const result: IProduct = {
-    quantityAvailable: 0,
+    isAvailable: product.isAvailable || false,
+    quantityAvailable: product.defaultVariant?.quantityAvailable || 0,
     attributes: [],
     media: [],
     slug: product.slug,
@@ -85,16 +87,6 @@ const convertAttributeValue = (av: Maybe<AttributeValue>): IProductAttributeValu
   }
 }
 
-export const convertCheckoutLine = ({ id, quantity, variant }: CheckoutLine) => {
-  return {
-    lineId: id,
-    id: variant.id,
-    name: variant.product.name,
-    thumbnail: { src: variant.product.thumbnail?.url || '' },
-    quantity,
-  }
-}
-
 const convertCheckoutAddressToAddress = (checkoutAddress: Address) => {
   return {
     firstName: checkoutAddress.firstName,
@@ -104,19 +96,6 @@ const convertCheckoutAddressToAddress = (checkoutAddress: Address) => {
     locality: checkoutAddress.city,
     streetAddress: checkoutAddress.streetAddress1,
   }
-}
-
-export const convertCheckoutCart = (checkout: Checkout) => {
-  const cart = {
-    id: checkout.id,
-    // @ts-ignore
-    items: checkout.lines?.map(line => convertCheckoutLine(line)),
-  }
-  const itemsInCart = cart.items?.reduce((total, item) => {
-    return total + item.quantity
-  }, 0)
-
-  return { cart, itemsInCart }
 }
 
 export const convertShippingPrice = (checkoutShippingPrice: TaxedMoney) => {
@@ -133,33 +112,82 @@ export const convertTotalPrice = (checkoutTotalPrice: TaxedMoney) => {
   }
 }
 
-export const convertCheckout = (checkout: Checkout) => {
+export const extractCheckoutCart = (checkout: Checkout): Cart => {
   const cart = {
     id: checkout.id,
-    items: checkout.lines?.map(line => convertCheckoutLine(line as CheckoutLine)),
+    items: checkout.lines?.map(line => convertCheckoutLineToCartItem(line as CheckoutLine)) || [],
+    quantity: 0,
+    total: 0,
   }
-  const itemsInCart = cart.items?.reduce((total, item) => {
-    return total + item.quantity
-  }, 0)
 
-  let shippingAddress = null
+  cart.quantity =
+    cart.items?.reduce((total, item) => {
+      return total + item.quantity
+    }, 0) || 0
+
+  cart.total =
+    cart.items?.reduce((total, item) => {
+      return total + item.product.price * item.quantity
+    }, 0) || 0
+
+  return cart
+}
+
+export const convertCheckoutLineToCartItem = ({
+  id,
+  quantity,
+  variant,
+}: CheckoutLine): CartLine => {
+  return {
+    id: id,
+    product: convertProductVariant(variant),
+    quantity,
+    total: quantity * (variant.pricing?.price?.gross.amount || 0),
+  }
+}
+
+export const convertCheckout = (checkout: Checkout): ICheckout => {
+  const cart = extractCheckoutCart(checkout)
+
+  let shippingAddress
 
   if (checkout.shippingAddress) {
     shippingAddress = convertCheckoutAddressToAddress(checkout.shippingAddress)
   }
 
-  let email = null
+  let email
 
   // we use dummy@example.com as a placeholder for email address
   if (checkout.email && checkout.email !== 'dummy@example.com') {
     email = checkout.email
   }
 
-  let billingAddress = null
+  let billingAddress
 
   if (checkout.billingAddress) {
     billingAddress = convertCheckoutAddressToAddress(checkout.billingAddress)
   }
 
-  return { cart, itemsInCart, shippingAddress, billingAddress, email }
+  let shippingPrice
+
+  if (checkout.shippingPrice) {
+    shippingPrice = convertShippingPrice(checkout.shippingPrice)
+  }
+
+  let totalPrice
+  if (checkout.totalPrice) {
+    totalPrice = convertTotalPrice(checkout.totalPrice)
+  }
+
+  return {
+    id: checkout.id,
+    token: checkout.token,
+    cart,
+    shippingAddress,
+    billingAddress,
+    email,
+    shippingPrice,
+    totalPrice,
+    shippingMethodId: checkout.shippingMethod?.id,
+  }
 }

@@ -1,5 +1,5 @@
 // react
-import { Fragment, memo } from 'react'
+import { Fragment, memo, useContext } from 'react'
 
 // third-party
 import classNames from 'classnames'
@@ -7,17 +7,11 @@ import classNames from 'classnames'
 // application
 import AppLink from './AppLink'
 import AsyncAction from './AsyncAction'
-import Compare16Svg from '../../svg/compare-16.svg'
 import CurrencyFormat from './CurrencyFormat'
 import Quickview16Svg from '../../svg/quickview-16.svg'
-import Rating from './Rating'
-import url from '../../services/url'
-import Wishlist16Svg from '../../svg/wishlist-16.svg'
+
 import { IProduct } from '../../interfaces/product'
-// import { useCompareAddItem } from '../../store/compare/compareHooks';
-// import { useQuickviewOpen } from '../../store/quickview/quickviewHooks';
-// import { useWishlistAddItem } from '../../store/wishlist/wishlistHooks';
-// import { useCartAddItem } from '../../store/cart/cartHooks';
+import SessionContext from '../../context/SessionContext'
 
 export type ProductCardLayout = 'grid-sm' | 'grid-nl' | 'grid-lg' | 'list' | 'horizontal'
 
@@ -35,14 +29,12 @@ function ProductCard(props: ProductCardProps) {
     'product-card--layout--list': layout === 'list',
     'product-card--layout--horizontal': layout === 'horizontal',
   })
-  // const cartAddItem = useCartAddItem()
-  // const wishlistAddItem = useWishlistAddItem()
-  // const compareAddItem = useCompareAddItem()
-  // const quickviewOpen = useQuickviewOpen()
 
-  const cartAddItem = (product: IProduct) => new Promise(() => {})
-  const wishlistAddItem = (product: IProduct) => new Promise(() => {})
-  const compareAddItem = (product: IProduct) => new Promise(() => {})
+  const { session, actions } = useContext(SessionContext)
+
+  const cartAddItem = (product: IProduct) => {
+    return actions.addToCart({ product, quantity: 1, id: session.checkoutId })
+  }
   const quickviewOpen = (slug: string) => new Promise(() => {})
 
   let image
@@ -82,7 +74,9 @@ function ProductCard(props: ProductCardProps) {
   return (
     <div className={containerClasses}>
       <AsyncAction
-        action={() => quickviewOpen(product.slug)}
+        action={() => {
+          return quickviewOpen(product.slug)
+        }}
         render={({ run, loading }) => (
           <button
             type="button"
@@ -110,68 +104,36 @@ function ProductCard(props: ProductCardProps) {
         </div>
         {price}
         <div className="product-card__buttons">
-          <AsyncAction
-            action={() => cartAddItem(product)}
-            render={({ run, loading }) => (
-              <Fragment>
-                <button
-                  type="button"
-                  onClick={run}
-                  className={classNames('btn btn-primary product-card__addtocart', {
-                    'btn-loading': loading,
-                  })}
-                >
-                  Add To Cart
-                </button>
-                <button
-                  type="button"
-                  onClick={run}
-                  className={classNames(
-                    'btn btn-secondary product-card__addtocart product-card__addtocart--list',
-                    {
+          {product.quantityAvailable > 0 && (
+            <AsyncAction
+              action={() => cartAddItem(product)}
+              render={({ run, loading }) => (
+                <Fragment>
+                  <button
+                    type="button"
+                    onClick={run}
+                    className={classNames('btn btn-primary product-card__addtocart', {
                       'btn-loading': loading,
-                    }
-                  )}
-                >
-                  Add To Cart
-                </button>
-              </Fragment>
-            )}
-          />
-          <AsyncAction
-            action={() => wishlistAddItem(product)}
-            render={({ run, loading }) => (
-              <button
-                type="button"
-                onClick={run}
-                className={classNames(
-                  'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist',
-                  {
-                    'btn-loading': loading,
-                  }
-                )}
-              >
-                <Wishlist16Svg />
-              </button>
-            )}
-          />
-          <AsyncAction
-            action={() => compareAddItem(product)}
-            render={({ run, loading }) => (
-              <button
-                type="button"
-                onClick={run}
-                className={classNames(
-                  'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare',
-                  {
-                    'btn-loading': loading,
-                  }
-                )}
-              >
-                <Compare16Svg />
-              </button>
-            )}
-          />
+                    })}
+                  >
+                    Add To Cart
+                  </button>
+                  <button
+                    type="button"
+                    onClick={run}
+                    className={classNames(
+                      'btn btn-secondary product-card__addtocart product-card__addtocart--list',
+                      {
+                        'btn-loading': loading,
+                      }
+                    )}
+                  >
+                    Add To Cart
+                  </button>
+                </Fragment>
+              )}
+            />
+          )}
         </div>
       </div>
     </div>

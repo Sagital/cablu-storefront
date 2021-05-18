@@ -22,6 +22,7 @@ export interface Image {
 
 export interface IProduct {
   id: string
+  isAvailable: boolean
   sku: string
   slug: string
   name: string

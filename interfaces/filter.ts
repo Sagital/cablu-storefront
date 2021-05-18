@@ -1,4 +1,4 @@
-import { IShopCategory } from './category'
+import { ICategory } from '../types'
 
 export interface IBaseFilter {
   type: string
@@ -23,7 +23,7 @@ export type IColorFilterValue = string[]
 export interface ICategoryFilter extends IBaseFilter {
   type: 'category'
   value: ICategoryFilterValue
-  items: IShopCategory[]
+  items: ICategory[]
 }
 export interface IRangeFilter extends IBaseFilter {
   type: 'range'
@@ -46,10 +46,3 @@ export interface IColorFilter extends IBaseFilter {
   value: IColorFilterValue
   items: IColorFilterItem[]
 }
-
-// export type IFilter =
-//     ICategoryFilter |
-//     IRangeFilter |
-//     ICheckFilter |
-//     IRadioFilter |
-//     IColorFilter;

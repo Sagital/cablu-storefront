@@ -9,8 +9,10 @@ import SessionContext from './SessionContext'
 const initialState = {
   signedIn: false,
   loading: true,
-  cart: {
-    items: [],
+  checkout: {
+    cart: {
+      items: [],
+    },
   },
 }
 
@@ -96,11 +98,11 @@ export default function SessionProvider({ url, children }) {
 
         /**
          * Adds items to the cart
+         * @param {string} id the checkout id
          * @param {Object} product Product data object
          * @param {Number} quantity The quantity to add to the cart
-         * @param {Object} otherParams Additional data to submit to api/addToCart
          */
-        async addToCart({ product, quantity, ...otherParams }) {
+        async addToCart({ id, product, quantity }) {
           const response = await fetch('/api/cart/add', {
             method: 'post',
             headers: {
@@ -109,7 +111,7 @@ export default function SessionProvider({ url, children }) {
             body: JSON.stringify({
               product,
               quantity,
-              ...otherParams,
+              id,
             }),
           })
 
@@ -133,15 +135,15 @@ export default function SessionProvider({ url, children }) {
          * in the cart or remove a product from the cart.
          * @param {Object} item Cart item to be updated
          * @param {number} quantity Expected quantity value
-         * @param {Object} otherParams Additional data to submit to api/cart/update
+         * @param {string} id the checkout id
          */
-        async updateCart({ item, quantity, ...otherParams }) {
+        async updateCart({ item, quantity, id }) {
           const response = await fetch('/api/cart/update', {
             method: 'post',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ item, quantity, ...otherParams }),
+            body: JSON.stringify({ item, quantity, id }),
           })
 
           const result = await response.json()
@@ -157,16 +159,16 @@ export default function SessionProvider({ url, children }) {
 
         /**
          * Removes item in the cart.
-         * @param {Object} item Cart item to be updated
-         * @param {Object} otherParams Additional data to submit to /api/cart/remove
+         * @param {string} id - the checkout id
+         * @param {Object} lineId - the id of the line to be removed
          */
-        async removeCartItem({ item, ...otherParams }) {
+        async removeCartItem({ id, lineId }) {
           const response = await fetch('/api/cart/remove', {
             method: 'post',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ item, ...otherParams }),
+            body: JSON.stringify({ id, lineId }),
           })
 
           const result = await response.json()
@@ -187,17 +189,15 @@ export default function SessionProvider({ url, children }) {
          * @param {string} shippingMethodId
          * @param {string} email
          * @param {string} checkoutId
-         * @param {string} paymentMethodId
          */
-        async updateCheckout({
+        async completeCheckout({
           checkoutId,
           email,
-          paymentMethodId,
           billingAddress,
           shippingAddress,
           shippingMethodId,
         }) {
-          const response = await fetch('/api/checkout/update', {
+          const response = await fetch('/api/checkout/complete', {
             method: 'post',
             headers: {
               'Content-Type': 'application/json',
@@ -210,11 +210,25 @@ export default function SessionProvider({ url, children }) {
               checkoutId,
             }),
           })
-
           const result = await response.json()
 
           if (response.ok) {
-            setSession({ ...session, paymentMethodId, ...result })
+            const order = {
+              cart: session.checkout.cart,
+              shippingAddress: shippingAddress,
+              billingAddress: billingAddress,
+              shippingMethodId: shippingMethodId,
+              email: email,
+              id: result.id,
+              token: null,
+            }
+
+            setSession(prevState => {
+              prevState.checkout = null
+              prevState.order = order
+
+              return { ...prevState }
+            })
           } else {
             throw new Error(
               get(result, 'error', 'An unknown error occurred while updating the checkout.')
@@ -222,37 +236,6 @@ export default function SessionProvider({ url, children }) {
           }
         },
 
-        /**
-         * Updates checkout
-         * @param {string} checkoutId
-         * @param {number} totalPrice
-         * @param {string} paymentMethodId
-         */
-        async completeCheckout({ checkoutId, totalPrice, paymentMethodId }) {
-          const response = await fetch('/api/checkout/complete', {
-            method: 'post',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              checkoutId,
-              totalPrice,
-              paymentMethodId,
-            }),
-          })
-
-          const result = await response.json()
-
-          setSession({ ...session, cart: { items: [] }, itemsInCart: 0 })
-
-          if (response.ok) {
-            return result
-          } else {
-            throw new Error(
-              get(result, 'error', 'An unknown error occurred while updating the checkout.')
-            )
-          }
-        },
       },
     }
   }, [session])

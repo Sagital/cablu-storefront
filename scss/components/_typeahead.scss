@@ -1,0 +1,126 @@
+@import '../svg';
+@import '../mixins/direction';
+//.typeahead {
+//  width: 100%;
+//  border: 1px solid gray;
+//  box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 2px 4px 1px rgba(0,0,0, .18);
+//  font-family: Arial, Helvetica, sans-serif;
+//  font-size: 14px;
+//  color: rgba(0, 0, 0, 0.73);
+//}
+
+//input.typeahead{
+//  width: 100%;
+//  border: none;
+//  font-family: Arial, Helvetica, sans-serif;
+//  font-size: 14px;
+//  color: rgba(0, 0, 0, 0.73);
+//  padding: 10px 5px ;
+//  box-sizing: border-box;
+//  outline: none;
+//}
+
+.hidden {
+  display: none;
+}
+
+.typeahead__container {
+  border: 1px solid #ced4da;
+  border-radius: 2px;
+}
+
+.typeahead__container.is-invalid {
+  border: 1px solid #dc3545;
+  border-radius: 2px;
+}
+
+
+.typeahead__container--open {
+  border: 1px solid #ced4da;
+
+
+  border-radius: 2px;
+}
+
+
+input.typeahead__search {
+
+  position: relative;
+  border: 1px solid #ced4da;
+  width: 90%;
+  margin-top: 5px;
+  margin-left: 5%;
+  @include direction {
+    background-position: $inline-end .75rem center;
+    #{$padding-inline-end}: calc(.75rem * 2 + 5px);
+  }
+  border-radius: 5px;
+
+  &:focus {
+    outline: none;
+
+  }
+}
+
+.typeahead__menu {
+  z-index: 10;
+  position: absolute;
+  width: calc(100% - 10px);
+
+  left: 5px;
+  margin: 0 auto;
+  border-left: 1px solid #ced4da;
+  border-right: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  background-color: white;
+}
+
+
+.typeahead__button {
+  text-align: left;
+  background-image: url(svg-select-arrow($form-control-select-arrow-color));
+  background-repeat: no-repeat;
+  background-size: 5px 10px;
+  border: none;
+  @include direction {
+    background-position: $inline-end .75rem center;
+    #{$padding-inline-end}: calc(.75rem * 2 + 5px);
+  }
+
+
+  &:focus {
+    color: inherit;
+    background-color: inherit;
+    border: none;
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.typeahead ul::before{
+  content: '';
+
+}
+
+ul.typeahead{
+
+  padding-top: 5px;
+  padding-left: 12px;
+  width: 100%;
+  background-color: white;
+  border-top: none;
+  list-style-type: none;
+  text-align: left;
+
+}
+
+li.typeahead {
+
+  padding: 0 5px ;
+  cursor: pointer;
+  color: grey;
+  font-weight: normal;
+
+}
+
+

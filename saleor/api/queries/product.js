@@ -21,6 +21,72 @@ const PRODUCTS_QUERY = gql`
             id
             name
             sku
+            quantityAvailable
+            pricing {
+              price {
+                net {
+                  currency
+                  amount
+                }
+                gross {
+                  currency
+                  amount
+                }
+              }
+              discount {
+                net {
+                  currency
+                  amount
+                }
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }
+`
+
+export const PRODUCTS_SEARCH_QUERY = gql`
+  query Products($filter: ProductFilterInput, $first: Int, $after: String) {
+    products(filter: $filter, first: $first, after: $after) {
+      edges {
+        node {
+          id
+          slug
+          name
+          category {
+            id
+            name
+            slug
+            parent {
+              id
+              name
+              slug
+              parent {
+                id
+                name
+                slug
+              }
+            }
+          }
+          media {
+            url
+            alt
+          }
+          thumbnail {
+            url
+            alt
+          }
+          defaultVariant {
+            id
+            name
+            sku
+            quantityAvailable
             pricing {
               price {
                 net {

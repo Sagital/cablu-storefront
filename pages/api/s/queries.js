@@ -21,6 +21,7 @@ export default gql`
               id
               name
               sku
+              quantityAvailable
               pricing {
                 price {
                   net {

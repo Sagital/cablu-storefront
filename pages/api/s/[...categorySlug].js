@@ -1,6 +1,5 @@
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
 import categoryQuery from './queries'
-import filters from './filters.json'
 import qs from 'qs'
 import { convertProduct } from '../../../saleor/converters'
 export default async function plp(req, res) {
@@ -38,7 +37,7 @@ export default async function plp(req, res) {
     variables,
   })
 
-  const categoryFilters = filters[theSlug] || []
+  const categoryFilters = []
 
   const x = {
     pageData: {

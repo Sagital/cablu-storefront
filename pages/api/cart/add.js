@@ -1,31 +1,31 @@
 import { addCheckoutLine, createCheckout } from '../../../saleor/api/checkout'
-import { convertCheckoutCart } from '../../../saleor/converters'
+
 const CART_TOKEN_COOKIE = 'cart_token'
 
-async function handler(req, res) {
+async function handler(req, res, next) {
   const cartToken = req.cookies[CART_TOKEN_COOKIE]
 
   const { product, quantity, id } = req.body
 
   let checkout
 
-  if (!cartToken) {
-    checkout = await createCheckout(product.id, quantity)
+  try {
+    if (!cartToken) {
+      checkout = await createCheckout(product.id, quantity)
+      res.setHeader(
+        'Set-Cookie',
+        ''.concat(CART_TOKEN_COOKIE, '=').concat(checkout.token, '; Path=/')
+      )
+    } else {
+      checkout = await addCheckoutLine(id, product.id, quantity)
+    }
 
-    res.setHeader(
-      'Set-Cookie',
-      ''.concat(CART_TOKEN_COOKIE, '=').concat(checkout.token, '; Path=/')
-    )
-  } else {
-    checkout = await addCheckoutLine(id, product.id, quantity)
+    res.json({
+      checkout,
+    })
+  } catch (e) {
+    res.status(422).json({ error: e.message })
   }
-
-  const { cart, itemsInCart } = convertCheckoutCart(checkout)
-
-  res.json({
-    cart,
-    itemsInCart,
-  })
 }
 
 export const config = {

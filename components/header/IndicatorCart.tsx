@@ -1,5 +1,5 @@
 // react
-import { Fragment } from 'react'
+import { Fragment, useContext } from 'react'
 
 // third-party
 import classNames from 'classnames'
@@ -12,53 +12,22 @@ import Cross10Svg from '../../svg/cross-10.svg'
 import CurrencyFormat from '../shared/CurrencyFormat'
 import Indicator from './Indicator'
 import url from '../../services/url'
-import { Cart } from '../types'
+import { Cart, CartLine } from '../types'
+import SessionContext from '../../context/SessionContext'
+import { ICheckout } from '../../types'
 //import { useCart, useCartRemoveItem } from '../../store/cart/cartHooks';
 
 function IndicatorCart() {
-  const cart: Cart = { totals: [], items: [], quantity: 0, subtotal: 0, total: 0 }
-  const cartRemoveItem = (id: string) => {
-    return new Promise(res => res)
+  const { session, actions } = useContext(SessionContext)
+
+  const cartRemoveItem = (checkoutId: string, lineId: string) => {
+    return actions.removeCartItem({ id: checkoutId, lineId })
   }
   let dropdown
   let totals
 
-  if (cart.totals.length > 0) {
-    totals = cart.totals.map((total, index) => (
-      <tr key={index}>
-        <th>{total.title}</th>
-        <td>
-          <CurrencyFormat value={total.price} />
-        </td>
-      </tr>
-    ))
-
-    totals = (
-      <Fragment>
-        <tr>
-          <th>Subtotal</th>
-          <td>
-            <CurrencyFormat value={cart.subtotal} />
-          </td>
-        </tr>
-        {totals}
-      </Fragment>
-    )
-  }
-
-  const items = cart.items.map(item => {
-    let options
+  const items = session.checkout?.cart?.items?.map((item: CartLine) => {
     let image
-
-    if (item.options) {
-      options = (
-        <ul className="dropcart__product-options">
-          {item.options.map((option, index) => (
-            <li key={index}>{`${option.optionTitle}: ${option.valueTitle}`}</li>
-          ))}
-        </ul>
-      )
-    }
 
     if (item.product.thumbnail) {
       image = (
@@ -72,7 +41,7 @@ function IndicatorCart() {
 
     const removeButton = (
       <AsyncAction
-        action={() => cartRemoveItem(item.id)}
+        action={() => cartRemoveItem(session.checkoutId, item.id)}
         render={({ run, loading }) => {
           const classes = classNames('dropcart__product-remove btn btn-light btn-sm btn-svg-icon', {
             'btn-loading': loading,
@@ -94,12 +63,11 @@ function IndicatorCart() {
           <div className="dropcart__product-name">
             <AppLink href={url.product(item.product)}>{item.product.name}</AppLink>
           </div>
-          {options}
           <div className="dropcart__product-meta">
             <span className="dropcart__product-quantity">{item.quantity}</span>
             {' × '}
             <span className="dropcart__product-price">
-              <CurrencyFormat value={item.price} />
+              <CurrencyFormat value={item.product.price} />
             </span>
           </div>
         </div>
@@ -108,7 +76,7 @@ function IndicatorCart() {
     )
   })
 
-  if (cart.quantity) {
+  if (session.checkout?.cart?.quantity) {
     dropdown = (
       <div className="dropcart">
         <div className="dropcart__products-list">{items}</div>
@@ -120,7 +88,7 @@ function IndicatorCart() {
               <tr>
                 <th>Total</th>
                 <td>
-                  <CurrencyFormat value={cart.total} />
+                  <CurrencyFormat value={session.checkout?.cart.total} />
                 </td>
               </tr>
             </tbody>
@@ -146,7 +114,12 @@ function IndicatorCart() {
   }
 
   return (
-    <Indicator url="/shop/cart" dropdown={dropdown} value={cart.quantity} icon={<Cart20Svg />} />
+    <Indicator
+      url="/cart"
+      dropdown={dropdown}
+      value={session.checkout?.cart?.quantity || 0}
+      icon={<Cart20Svg />}
+    />
   )
 }
 

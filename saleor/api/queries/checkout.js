@@ -50,6 +50,9 @@ export const CHECKOUT_QUERY = gql`
               net {
                 amount
               }
+              gross {
+                amount
+              }
             }
           }
         }

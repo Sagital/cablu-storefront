@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { PRODUCT_VARIANT_QUERY, PRODUCTS_QUERY } from './queries/product'
+import { PRODUCT_VARIANT_QUERY, PRODUCTS_QUERY, PRODUCTS_SEARCH_QUERY } from './queries/product'
 import {
   OrderDirection,
   Product,
@@ -27,30 +27,32 @@ export const getProductVariant = async (id: string) => {
   return convertProductVariant(response.data.productVariant)
 }
 
-export const getProducts = async (params: { [key: string]: string[] }) => {
+export const getProducts = async (
+  categoryIds: string[],
+  filters: { [key: string]: string[] },
+  sort: string
+) => {
   const productFilterInput: ProductFilterInput = {
+    categories: categoryIds,
     attributes: [],
   }
 
   const sortBy: ProductOrder = { direction: OrderDirection.Asc, field: ProductOrderField.Type }
 
-  Object.keys(params).forEach(k => {
-    if (k === 'filter_category-id') {
-      // @ts-ignore
-      productFilterInput.categories = [params[`filter_category-id`]]
-    } else if (k.startsWith('filter_')) {
-      productFilterInput.attributes?.push({
-        slug: k.substring('filter_'.length),
-        values: params[k],
-      })
-    } else if (k === 'sort') {
-      // @ts-ignore
-      const [field, direction] = params[k].split('_')
-
-      sortBy.field = field.toUpperCase()
-      sortBy.direction = direction.toUpperCase()
-    }
+  Object.keys(filters).forEach(k => {
+    productFilterInput.attributes?.push({
+      slug: k,
+      values: filters[k],
+    })
   })
+  const [field, direction] = sort.split('_')
+
+  if (field && direction) {
+    // @ts-ignore
+    sortBy.field = field.toUpperCase()
+    // @ts-ignore
+    sortBy.direction = direction.toUpperCase()
+  }
 
   const variables = {
     first: 100,
@@ -62,6 +64,43 @@ export const getProducts = async (params: { [key: string]: string[] }) => {
   const response = await client.query<{ products: ProductCountableConnection }>({
     query: gql`
       ${PRODUCTS_QUERY}
+    `,
+    variables,
+  })
+
+  return response.data.products.edges
+    .filter(e => e.node.defaultVariant !== null)
+    .map(e => convertProduct(e.node))
+}
+
+export const searchProducts = async ({
+  categoryId,
+  searchTerm,
+  limit,
+}: {
+  categoryId?: string
+  searchTerm: string
+  limit: number
+}) => {
+  const productFilterInput: ProductFilterInput = {
+    search: searchTerm,
+  }
+
+  if (categoryId) {
+    productFilterInput.categories = [categoryId]
+  }
+
+  const variables = {
+    first: limit,
+    after: '',
+    filter: productFilterInput,
+  }
+
+  console.log(variables)
+
+  const response = await client.query<{ products: ProductCountableConnection }>({
+    query: gql`
+      ${PRODUCTS_SEARCH_QUERY}
     `,
     variables,
   })

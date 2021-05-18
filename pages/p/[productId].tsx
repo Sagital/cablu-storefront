@@ -67,7 +67,7 @@ const Product = React.memo((props: { loading: false }) => {
   const color = get(props, 'pageData.color') || {}
   const size = get(props, 'pageData.size') || {}
   //const quantity = get(props, 'pageData.quantity')
-  const { actions, session } = useContext(SessionContext)
+  const { session, actions } = useContext(SessionContext)
   const { loading } = props
 
   let prices
@@ -109,31 +109,9 @@ const Product = React.memo((props: { loading: false }) => {
       return Promise.resolve()
     }
 
-    return cartAddItem(product, [], quantity)
+    return actions.addToCart({ id: session.checkoutId, product: product, quantity: quantity })
   }
 
-  // Adds an item to the cart
-  // const handleSubmit = async event => {
-  //   event.preventDefault() // prevent the page location from changing
-  //   setAddToCartInProgress(true) // disable the add to cart button until the request is finished
-  //
-  //   try {
-  //     // send the data to the server
-  //     await actions.addToCart({
-  //       id: session.cart.id,
-  //       product,
-  //       quantity,
-  //       color: color.id,
-  //       size: size.id,
-  //     })
-  //
-  //     // open the confirmation dialog
-  //     setConfirmationOpen(true)
-  //   } finally {
-  //     // re-enable the add to cart button
-  //     setAddToCartInProgress(false)
-  //   }
-  // }
 
   const breadcrumb = [
     { title: 'Home', url: url.home() },
@@ -195,7 +173,7 @@ const Product = React.memo((props: { loading: false }) => {
                             <button
                               type="button"
                               onClick={run}
-                              disabled={!quantity}
+                              disabled={!quantity || quantity > product.quantityAvailable}
                               className={classNames('btn btn-primary btn-lg', {
                                 'btn-loading': loading,
                               })}

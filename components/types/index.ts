@@ -7,11 +7,9 @@ export interface CartItemOption {
   valueTitle: string
 }
 
-export interface CartItem {
+export interface CartLine {
   id: string
   product: IProduct
-  options: CartItemOption[]
-  price: number
   quantity: number
   total: number
 }
@@ -25,10 +23,8 @@ export interface CartTotal {
 }
 
 export interface Cart {
-  items: CartItem[]
+  lines: CartLine[]
   quantity: number
-  subtotal: number
-  totals: CartTotal[]
   total: number
 }
 

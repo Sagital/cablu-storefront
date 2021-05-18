@@ -11,15 +11,7 @@ import LayoutGridWithDetails16x16Svg from '../../svg/layout-grid-with-details-16
 import LayoutList16x16Svg from '../../svg/layout-list-16x16.svg'
 import Pagination from '../shared/Pagination'
 import ProductCard from '../shared/ProductCard'
-import { IProductsList } from '../../interfaces/product'
-// import {
-//   useSetOption,
-//   useShopFilterValues,
-//   useShopOptions,
-//   useShopProductsList,
-//   useShopProductsListIsLoading,
-//   useShopResetFiltersThunk,
-// } from '../../store/shop/shopHooks'
+import { IProduct, IProductsList } from '../../interfaces/product'
 
 export type ProductsViewLayout = 'grid' | 'grid-with-features' | 'list'
 
@@ -30,11 +22,13 @@ type ProductsViewOffcanvas = 'always' | 'mobile'
 interface ProductsViewProps {
   layout?: ProductsViewLayout
   grid?: ProductsViewGrid
+  loading: boolean
   offcanvas?: ProductsViewOffcanvas
   sortValue: string
   onSortChange: (sort: string) => {}
   openSidebarFn?: () => void
-  store: any
+  products: IProduct[]
+  sort: string
 }
 
 interface ViewMode {
@@ -48,12 +42,14 @@ function ProductsView(props: ProductsViewProps) {
     layout: propsLayout = 'grid',
     grid = 'grid-3-sidebar',
     offcanvas = 'mobile',
-    store,
+    products,
+    sort,
+    loading,
     openSidebarFn,
   } = props
   const [layout, setLayout] = useState(propsLayout)
 
-  const isLoading = store.loading
+  const isLoading = loading
   // const productsList = useShopProductsList();
   const productsList: IProductsList = {
     filters: [],
@@ -61,10 +57,10 @@ function ProductsView(props: ProductsViewProps) {
     limit: 0,
     page: 0,
     pages: 0,
-    sort: store.pageData.sort || 'default',
-    to: store.pageData.products.length,
-    total: store.pageData.products.length,
-    items: store.pageData.products,
+    sort: sort || 'default',
+    to: products.length,
+    total: products.length,
+    items: products,
   }
 
   // const filterValues = useShopFilterValues()
@@ -202,13 +198,24 @@ function ProductsView(props: ProductsViewProps) {
     )
   } else {
     content = (
-      <div className="products-view__empty">
-        <div className="products-view__empty-title">No matching items</div>
-        <div className="products-view__empty-subtitle">Try resetting the filters</div>
-        {/*<button type="button" className="btn btn-primary btn-sm" onClick={shopResetFilters}>*/}
-        {/*  Reset filters*/}
-        {/*</button>*/}
-      </div>
+      <>
+        <div className="products-view__options">
+          <div className="view-options__filters-button">
+            <button type="button" className="filters-button" onClick={openSidebarFn}>
+              <Filters16Svg className="filters-button__icon" />
+              <span className="filters-button__title">Filters</span>
+              {/*{!!filtersCount && <span className="filters-button__counter">{filtersCount}</span>}*/}
+            </button>
+          </div>
+        </div>
+        <div className="products-view__empty">
+          <div className="products-view__empty-title">No matching items</div>
+          <div className="products-view__empty-subtitle">Try resetting the filters</div>
+          {/*<button type="button" className="btn btn-primary btn-sm" onClick={shopResetFilters}>*/}
+          {/*  Reset filters*/}
+          {/*</button>*/}
+        </div>
+      </>
     )
   }
 

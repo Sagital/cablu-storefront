@@ -1,7 +1,7 @@
-<svg width="389" height="242" xmlns="http://www.w3.org/2000/svg">
-
+<svg width="215" height="92" xmlns="http://www.w3.org/2000/svg">
     <g>
         <title>Layer 1</title>
-        <text transform="matrix(3.23607, 0, 0, 3.87289, -490.277, -778.119)" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Rounded Mplus 1c Bold'" font-size="16" id="svg_1" y="237.76139" x="179.02348" opacity="undefined" stroke-width="0" stroke="#000" fill="#4c4c4c">cablu.io</text>
+        <text fill="#4c4c4c" stroke="#000" stroke-width="0" opacity="undefined" x="153" y="218.91242" id="svg_1" font-size="16" font-family="'Rounded Mplus 1c Bold'" text-anchor="start" xml:space="preserve" font-weight="normal" font-style="normal" transform="matrix(3.23607, 0, 0, 3.87289, -490.277, -778.119)">cablu.io</text>
     </g>
+
 </svg>

@@ -1,14 +1,14 @@
-import { convertCheckoutCart } from '../../../saleor/converters'
 import { updateCheckoutLine } from '../../../saleor/api/checkout'
 
 export default async function handler(req, res) {
   const { item, quantity, id } = req.body
 
-  const checkout = await updateCheckoutLine(id, item.id, quantity)
-
-  // TODO move this to saleor
-  const { cart, itemsInCart } = convertCheckoutCart(checkout)
-  return res.json({ cart, itemsInCart })
+  try {
+    const cart = await updateCheckoutLine(id, item.id, quantity)
+    return res.json(cart)
+  } catch (e) {
+    res.status(422).json({ error: e.message })
+  }
 }
 
 export const config = {

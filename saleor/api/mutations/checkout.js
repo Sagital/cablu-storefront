@@ -9,16 +9,20 @@ const CheckoutFragment = gql`
       quantity
       variant {
         id
-        name
         pricing {
           price {
             net {
               amount
               currency
             }
+            gross {
+              amount
+              currency
+            }
           }
         }
         product {
+          name
           thumbnail {
             url
             alt
@@ -154,10 +158,12 @@ export const CHECKOUT_COMPLETE = gql`
     checkoutComplete(checkoutId: $checkoutId) {
       order {
         id
+        trackingClientId
         status
         paymentStatus
       }
       checkoutErrors {
+        code
         field
         message
       }
@@ -170,23 +176,6 @@ export const CHECKOUT_SHIPPING_METHOD_UPDATE = gql`
     checkoutShippingMethodUpdate(checkoutId: $checkoutId, shippingMethodId: $shippingMethodId) {
       checkout {
         id
-        shippingPrice {
-          net {
-            amount
-            currency
-          }
-          gross {
-            amount
-          }
-        }
-        totalPrice {
-          net {
-            amount
-          }
-          gross {
-            amount
-          }
-        }
       }
       checkoutErrors {
         field
