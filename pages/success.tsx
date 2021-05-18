@@ -11,6 +11,7 @@ import url from '../services/url'
 import theme from '../data/theme'
 import { useContext } from 'react'
 import SessionContext from '../context/SessionContext'
+import { CartLine } from '../components/types'
 
 export default function PageOrderSuccess() {
   const getCurrentDate = () => {
@@ -26,7 +27,7 @@ export default function PageOrderSuccess() {
     return null
   }
 
-  const items = order.cart.items.map((item, itemIndex) => {
+  const items = order.cart.items.map((item: CartLine, itemIndex: number) => {
     return (
       <tr key={itemIndex}>
         <td className="order-list__column-image">

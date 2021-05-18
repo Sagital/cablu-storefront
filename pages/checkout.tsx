@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
+import React, { ChangeEvent, useContext, useState } from 'react'
 import CurrencyFormat from '../components/shared/CurrencyFormat'
 
 import PageHeader from '../components/shared/PageHeader'
@@ -14,6 +14,7 @@ import { validateAddress } from '../components/checkout/addressValidator'
 
 import AddressInput from '../components/checkout/AddressInput'
 import classNames from 'classnames'
+import { CartLine } from '../components/types'
 
 export type RenderPaymentFn = CollapseRenderFn<HTMLLIElement, HTMLDivElement>
 
@@ -71,6 +72,7 @@ export default function CheckoutPage() {
 
     if (!email) {
       // TODO valid email not only required
+      // @ts-ignore
       shippingAddressErrors.email = 'Required'
     }
 
@@ -131,7 +133,7 @@ export default function CheckoutPage() {
   //   </tr>
   // ))
 
-  const cartItems = cart.items.map(item => (
+  const cartItems = cart.items.map((item: CartLine) => (
     <tr key={item.id}>
       <td>{`${item.product.name} × ${item.quantity}`}</td>
       <td>
@@ -256,7 +258,7 @@ export default function CheckoutPage() {
                   <div className="form-group">
                     <div
                       className="form-check"
-                      onClick={e => {
+                      onClick={() => {
                         setBillingEqualsShipping(!billingEqualsShipping)
                       }}
                     >

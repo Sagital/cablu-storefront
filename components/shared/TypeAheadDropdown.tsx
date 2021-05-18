@@ -44,7 +44,7 @@ export default function TypeAheadDropDown(props: any) {
               isOpen ? 'typeahead__container--open' : 'typeahead__container',
               props.error ? 'is-invalid' : '',
             ])}
-            {...getRootProps({}, { suppressRefError: true })}
+            {...getRootProps()}
           >
             <button {...getToggleButtonProps()} className="form-control typeahead__button">
               {getItemName(props.value) || props.placeholder}

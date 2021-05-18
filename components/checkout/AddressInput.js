@@ -8,8 +8,8 @@ export default function AddressInput({
   address,
   setAddress,
   errors,
-  email,
-  setEmail,
+  email = null,
+  setEmail = _ => {},
   includeEmail,
   setAddressErrors,
 }) {
@@ -19,11 +19,6 @@ export default function AddressInput({
     setAddress({ ...address, [key]: value })
 
     setAddressErrors({ ...errors, [key]: null })
-  }
-
-  const handleEmailChange = value => {
-    setEmail(value)
-    setAddressErrors({ ...errors, [email]: null })
   }
 
   useEffect(() => {

@@ -23,7 +23,8 @@ export interface CartTotal {
 }
 
 export interface Cart {
-  lines: CartLine[]
+  lines?: CartLine[]
+  items: CartLine[]
   quantity: number
   total: number
 }

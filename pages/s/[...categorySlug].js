@@ -1,21 +1,17 @@
 import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
-import {  useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@material-ui/core/styles'
 import Head from 'next/head'
 import categories from '../api/s/categories.json'
-
-import qs from 'query-string'
 
 import CategorySidebar from '../../components/subcategory/CategorySidebar'
 import CategorySidebarItem from '../../components/subcategory/CategorySidebarItem'
 import WidgetFilters from '../../components/widgets/WidgetFilters'
 import BlockLoader from '../../components/blocks/BlockLoader'
-import ProductsView, { ProductsViewGrid } from '../../components/subcategory/ProductsView'
+import ProductsView from '../../components/subcategory/ProductsView'
 import url from '../../services/url'
 import PageHeader from '../../components/shared/PageHeader'
-import { useRouter } from 'next/router'
 
 const Subcategory = props => {
-
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const [loading, setLoading] = useState(false)
@@ -69,8 +65,7 @@ const Subcategory = props => {
     setSortValue(sort)
   }
 
-  const [latestProducts, setLatestProducts] = useState([])
-
+  const [latestProducts] = useState([])
 
   const onFiltersChanged = (filter, values) => {
     const newFilterValues = { ...filterValues, [filter.slug]: values }
@@ -170,10 +165,65 @@ const Subcategory = props => {
 
         {content}
       </Fragment>
-
-
     </>
   )
 }
+
+export const getStaticProps = async ({ params }) => {
+  const firstSlug = params.categorySlug[0]
+
+  const sortOptions = [
+    {
+      name: 'Price - Lowest',
+      code: 'price_asc',
+    },
+    {
+      name: 'Price - Highest',
+      code: 'price_desc',
+    },
+    {
+      name: 'Most Popular',
+      code: 'pop',
+    },
+    {
+      name: 'Highest Rated',
+      code: 'rating',
+    },
+  ]
+
+  return {
+    props: { category: categories[firstSlug], sortOptions }, // will be passed to the page component as props
+  }
+}
+
+export async function getStaticPaths() {
+  // Get the paths we want to pre-render based on posts
+  const paths = Object.keys(categories).map(slug => ({
+    params: { categorySlug: [slug] },
+  }))
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: false }
+}
+
+// Subcategory.getStaticProps : getStaticProps = createLazyProps(opts => {
+//   const { res } = opts
+//   if (res) res.setHeader('Cache-Control', 'max-age=99999')
+//   return fetchFromAPI(opts)
+// })
+
+// export async function getServerSideProps(context) {
+//   console.log(context)
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   }
+// }
+
+// Subcategory.getServerSide = createLazyProps(opts => {
+//   const { res } = opts
+//   if (res) res.setHeader('Cache-Control', 'max-age=99999')
+//   return fetchFromAPI(opts)
+// })
 
 export default Subcategory
