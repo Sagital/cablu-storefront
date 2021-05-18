@@ -29,7 +29,7 @@ function CartPage() {
   const { session, actions } = useContext(SessionContext)
   const [loading, setLoading] = useState(false)
 
-  const cart = session.cart
+  const cart = session.checkout.cart
 
   const cartRemoveItem = (itemId: string) => {
     return actions.removeCartItem({ id: cart.id, lineId: itemId })

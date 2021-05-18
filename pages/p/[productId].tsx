@@ -109,9 +109,8 @@ const Product = React.memo((props: { loading: false }) => {
       return Promise.resolve()
     }
 
-    return actions.addToCart({ id: session.checkoutId, product: product, quantity: quantity })
+    return actions.addToCart({ id: session.checkout.id, product: product, quantity: quantity })
   }
-
 
   const breadcrumb = [
     { title: 'Home', url: url.home() },

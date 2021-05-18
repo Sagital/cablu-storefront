@@ -33,7 +33,7 @@ function ProductCard(props: ProductCardProps) {
   const { session, actions } = useContext(SessionContext)
 
   const cartAddItem = (product: IProduct) => {
-    return actions.addToCart({ product, quantity: 1, id: session.checkoutId })
+    return actions.addToCart({ product, quantity: 1, id: session.checkout.id })
   }
   const quickviewOpen = (slug: string) => new Promise(() => {})
 
