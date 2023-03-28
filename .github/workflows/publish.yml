@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "12.x"
       - name: Build and publish docker image
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: cip123/cablu-storefront:${{ github.sha }}
           username: ${{ secrets.DOCKERHUB_USER }}
